@@ -38,26 +38,17 @@ struct HomeView: View {
     }
 
     private func grid(_ books: [Book], isLoadingMore: Bool) -> some View {
-        ScrollView {
-            LazyVGrid(
-                columns: Array(repeating: GridItem(.flexible(), spacing: theme.dimens.spacingM), count: 2),
-                spacing: theme.dimens.spacingM
-            ) {
-                ForEach(books) { book in
-                    BookCard(
-                        book: book,
-                        priceText: PriceFormatter.standard.string(from: book.price),
-                        isFavorite: favorites.isFavorite(book.id),
-                        onSelect: { onSelectBook(book) },
-                        onToggleFavorite: { gate.require { Task { await favorites.toggle(book) } } }
-                    )
-                    .onAppear { Task { await viewModel.send(.bookAppeared(book)) } }
+        BookGrid(
+            books: books,
+            isFavorite: { favorites.isFavorite($0.id) },
+            onSelect: onSelectBook,
+            onToggleFavorite: { book in gate.require { Task { await favorites.toggle(book) } } },
+            onBookAppeared: { book in Task { await viewModel.send(.bookAppeared(book)) } },
+            footer: {
+                if isLoadingMore {
+                    ProgressView().tint(theme.colors.textOnPrimary).padding(theme.dimens.spacingL)
                 }
             }
-            .padding(.horizontal, theme.dimens.spacingL)
-            if isLoadingMore {
-                ProgressView().tint(theme.colors.textOnPrimary).padding(theme.dimens.spacingL)
-            }
-        }
+        )
     }
 }

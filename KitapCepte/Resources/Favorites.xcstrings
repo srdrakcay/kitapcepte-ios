@@ -1,0 +1,36 @@
+{
+  "sourceLanguage" : "tr",
+  "strings" : {
+    "favorites.title" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favoriler"
+          }
+        }
+      }
+    },
+    "favorites.empty.title" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Henüz favorin yok"
+          }
+        }
+      }
+    },
+    "favorites.empty.message" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beğendiğin kitapların kalbine dokun; favorilerin burada listelenir."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

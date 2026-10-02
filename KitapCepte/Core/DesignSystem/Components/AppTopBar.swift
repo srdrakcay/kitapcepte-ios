@@ -48,6 +48,16 @@ extension AppTopBar where Leading == EmptyView, Trailing == AppIconButton {
     }
 }
 
+// MARK: Faz 5
+extension AppTopBar where Leading == EmptyView, Trailing == AppIconButton {
+    /// Sekme varyantı: ortada ekran başlığı, sağda profil (ör. Favoriler).
+    static func titled(_ title: String, onProfile: @escaping () -> Void) -> AppTopBar {
+        AppTopBar(title: title) {
+            AppIconButton(systemImage: "person.fill", accessibilityLabel: Strings.Accessibility.profile, action: onProfile)
+        }
+    }
+}
+
 extension AppTopBar where Leading == AppIconButton, Trailing == FavoriteButton {
     /// Detay varyantı: solda geri, ortada başlık, sağda favori.
     static func detail(

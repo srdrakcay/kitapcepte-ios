@@ -18,6 +18,15 @@ final class SwiftDataFavoritesRepository: FavoritesRepository {
         return Set(entities.map(\.bookID))
     }
 
+    func favoriteBooks() async throws -> [Book] {
+        guard let owner = userIDProvider() else { return [] }
+        let descriptor = FetchDescriptor<FavoriteEntity>(
+            predicate: #Predicate { $0.ownerID == owner },
+            sortBy: [SortDescriptor(\.addedAt, order: .reverse)]
+        )
+        return try context.fetch(descriptor).map(FavoriteMapper.book(from:))
+    }
+
     func toggle(_ book: Book) async throws -> Bool {
         guard let owner = userIDProvider() else { throw AppError.unknown }
         let bookID = book.id

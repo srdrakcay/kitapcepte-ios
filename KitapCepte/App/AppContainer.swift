@@ -11,6 +11,7 @@ struct AppContainer {
     let sessionManager: SessionManager
     let guestGate: GuestGate
     let favoritesStore: FavoritesStore
+    let favoritesRepository: FavoritesRepository // MARK: Faz 5
     let cartStore: CartStore
     let modelContainer: ModelContainer
 
@@ -39,6 +40,7 @@ struct AppContainer {
             sessionManager: sessionManager,
             guestGate: GuestGate(sessionManager: sessionManager),
             favoritesStore: FavoritesStore(repository: favoritesRepository),
+            favoritesRepository: favoritesRepository, // MARK: Faz 5
             cartStore: CartStore(repository: cartRepository),
             modelContainer: modelContainer
         )
@@ -66,6 +68,11 @@ struct AppContainer {
 
     func makeHomeViewModel() -> HomeViewModel {
         HomeViewModel(getBooks: GetBooksUseCase(repository: bookRepository))
+    }
+
+    // MARK: Faz 5
+    func makeFavoritesViewModel() -> FavoritesViewModel {
+        FavoritesViewModel(getFavorites: GetFavoritesUseCase(repository: favoritesRepository), favorites: favoritesStore)
     }
 
     func makeDetailViewModel(book: Book) -> DetailViewModel {

@@ -27,7 +27,8 @@ private struct StateMessage<Actions: View>: View {
             if let message {
                 Text(message)
                     .font(theme.typography.body)
-                    .foregroundStyle(theme.colors.textSecondary)
+                    // Mesaj gradyan zemin üzerinde durur; textSecondary orada okunmuyor.
+                    .foregroundStyle(theme.colors.textPrimary)
                     .multilineTextAlignment(.center)
             }
             actions
