@@ -88,6 +88,7 @@ struct AppContainer {
         ProfileViewModel(
             userProvider: { [sessionManager] in sessionManager.currentUser },
             changePassword: ChangePasswordUseCase(repository: authRepository),
+            savedCards: savedCardsStore, // MARK: Faz 8b
             signOut: { [sessionManager] in await sessionManager.signOut() }
         )
     }

@@ -15,6 +15,7 @@ struct ProfileView: View {
                 ScrollView {
                     VStack(spacing: theme.dimens.spacingL) {
                         accountSection(user)
+                        cardsSection
                         passwordSection(viewModel.state)
                         AppButton(title: Strings.Profile.signOutButton, kind: .secondary) {
                             viewModel.send(.signOutTapped)
@@ -65,6 +66,33 @@ struct ProfileView: View {
         }
     }
 
+    // MARK: Faz 8b
+    private var cardsSection: some View {
+        ProfileSection(title: Strings.Profile.cardsTitle) {
+            if let error = viewModel.state.cardError { AppErrorBanner(message: error) }
+            let rows = viewModel.cardRows
+            if rows.isEmpty {
+                Text(Strings.Profile.cardsEmpty)
+                    .font(theme.typography.body)
+                    .foregroundStyle(theme.colors.textSecondary)
+                    .multilineTextAlignment(.center)
+                    .frame(maxWidth: .infinity)
+            } else {
+                ForEach(rows) { row in
+                    SavedCardRow(
+                        brandName: row.brandName, maskedNumber: row.maskedNumber, holderText: row.holderText,
+                        expiryText: row.expiryText, expiredText: row.isExpired ? Strings.Profile.cardExpired : nil,
+                        accessibilityText: row.accessibilityText,
+                        isConfirmingDeletion: viewModel.pendingCardDeletionID == row.id,
+                        onRequestDelete: { viewModel.send(.cardDeleteRequested(row.id)) },
+                        onCancelDelete: { viewModel.send(.cardDeleteCancelled) },
+                        onConfirmDelete: { Task { await viewModel.confirmCardDeletion() } }
+                    )
+                }
+            }
+        }
+    }
+
     private func passwordSection(_ state: ProfileViewModel.State) -> some View {
         ProfileSection(title: Strings.Profile.passwordTitle) {
             AppSecureField(
@@ -109,11 +137,25 @@ private final class PreviewAuthRepository: AuthRepository {
     func changePassword(userID: UUID, current: String, new: String) async throws { throw AuthError.invalidCredentials }
 }
 
+@MainActor
+private final class PreviewSavedCardRepository: SavedCardRepository {
+    private var stored = [
+        PaymentCardSummary(brand: .visa, last4: "4242", holderName: "Ada Lovelace", expiryMonth: 12, expiryYear: 2030),
+        PaymentCardSummary(brand: .mastercard, last4: "4444", holderName: "Ada Lovelace", expiryMonth: 1, expiryYear: 2020)
+    ]
+    func cards() async -> [PaymentCardSummary] { stored }
+    func save(_ summary: PaymentCardSummary) async throws { stored.append(summary) }
+    func delete(id: UUID) async throws { stored.removeAll { $0.id == id } }
+}
+
 #Preview {
+    let store = SavedCardsStore(repository: PreviewSavedCardRepository())
     let viewModel = ProfileViewModel(
         userProvider: { User(id: UUID(), name: "Ada Lovelace", email: "ada@example.com") },
         changePassword: ChangePasswordUseCase(repository: PreviewAuthRepository()),
+        savedCards: store,
         signOut: {}
     )
     return AppScaffold { ProfileView(viewModel: viewModel) }
+        .task { await store.reload() }
 }

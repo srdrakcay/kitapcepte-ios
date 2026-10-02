@@ -5,3 +5,4 @@ build/
 *.xcuserstate
 .swiftpm/
 *.xcodeproj/project.xcworkspace/xcuserdata/
+.claude/

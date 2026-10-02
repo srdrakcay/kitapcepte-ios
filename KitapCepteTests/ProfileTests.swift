@@ -113,11 +113,15 @@ struct ProfileViewModelTests {
     private func makeSUT(
         repo: FakeAuthRepository = FakeAuthRepository(),
         user: User? = .sample,
+        savedCards: SavedCardsStore = SavedCardsStore(repository: FakeSavedCardRepository()),
         onSignOut: @escaping () -> Void = {}
     ) -> ProfileViewModel {
         ProfileViewModel(
             userProvider: { user },
             changePassword: ChangePasswordUseCase(repository: repo),
+            savedCards: savedCards,
+            dateProvider: FixedDateProvider(year: 2030, month: 6),
+            calendar: FixedDateProvider.calendar,
             signOut: { onSignOut() }
         )
     }
@@ -222,5 +226,112 @@ struct ProfileViewModelTests {
         await sut.confirmSignOut()
         #expect(!sut.state.isConfirmingSignOut)
         #expect(signOutCount == 1)
+    }
+}
+
+@MainActor
+struct ProfileSavedCardsTests {
+    private static let visa = PaymentCardSummary(brand: .visa, last4: "4242", holderName: "Ada Lovelace", expiryMonth: 12, expiryYear: 2032)
+    private static let expired = PaymentCardSummary(brand: .mastercard, last4: "4444", holderName: "Ada Lovelace", expiryMonth: 5, expiryYear: 2030)
+
+    private func makeSUT(
+        cards: [PaymentCardSummary] = [],
+        repo: FakeSavedCardRepository? = nil
+    ) async -> (sut: ProfileViewModel, store: SavedCardsStore, repo: FakeSavedCardRepository) {
+        let repo = repo ?? FakeSavedCardRepository(cards: cards)
+        let store = SavedCardsStore(repository: repo)
+        await store.reload()
+        let sut = ProfileViewModel(
+            userProvider: { .sample },
+            changePassword: ChangePasswordUseCase(repository: FakeAuthRepository()),
+            savedCards: store,
+            dateProvider: FixedDateProvider(year: 2030, month: 6),
+            calendar: FixedDateProvider.calendar,
+            signOut: {}
+        )
+        return (sut, store, repo)
+    }
+
+    @Test func listsRowsWithMaskedLast4AndExpiry() async throws {
+        let (sut, _, _) = await makeSUT(cards: [Self.visa])
+        let row = try #require(sut.cardRows.first)
+        #expect(row.brandName == CardBrand.visa.title)
+        #expect(row.maskedNumber == "•••• 4242")
+        #expect(row.holderText == "ADA LOVELACE")
+        #expect(row.expiryText == Strings.Profile.cardExpiry("12/32"))
+        #expect(row.isExpired == false)
+    }
+
+    @Test func emptyStoreHasNoRows() async {
+        let (sut, _, _) = await makeSUT()
+        #expect(sut.cardRows.isEmpty)
+    }
+
+    @Test func pastExpiryIsFlaggedButCurrentMonthIsNot() async {
+        let current = PaymentCardSummary(brand: .visa, last4: "1111", holderName: "A", expiryMonth: 6, expiryYear: 2030)
+        let (sut, _, _) = await makeSUT(cards: [Self.expired, current])
+        #expect(sut.cardRows.map(\.isExpired) == [true, false])
+        #expect(sut.cardRows.first?.accessibilityText.contains(Strings.Profile.cardExpired) == true)
+    }
+
+    @Test func deleteConfirmedRemovesCard() async {
+        let (sut, _, repo) = await makeSUT(cards: [Self.visa, Self.expired])
+        sut.send(.cardDeleteRequested(Self.visa.id))
+        #expect(sut.pendingCardDeletionID == Self.visa.id)
+        await sut.confirmCardDeletion()
+        #expect(sut.cardRows.map(\.id) == [Self.expired.id])
+        #expect(repo.stored.count == 1)
+        #expect(sut.pendingCardDeletionID == nil)
+        #expect(sut.state.cardError == nil)
+    }
+
+    @Test func deleteCancelledKeepsCard() async {
+        let (sut, _, repo) = await makeSUT(cards: [Self.visa])
+        sut.send(.cardDeleteRequested(Self.visa.id))
+        sut.send(.cardDeleteCancelled)
+        await sut.confirmCardDeletion()
+        #expect(sut.pendingCardDeletionID == nil)
+        #expect(sut.cardRows.count == 1)
+        #expect(repo.stored.count == 1)
+    }
+
+    @Test func deleteFailureShowsErrorAndKeepsCard() async {
+        let (sut, _, repo) = await makeSUT(cards: [Self.visa])
+        repo.shouldFail = true
+        sut.send(.cardDeleteRequested(Self.visa.id))
+        await sut.confirmCardDeletion()
+        #expect(sut.state.cardError == Strings.Profile.cardDeleteError)
+        #expect(sut.cardRows.count == 1)
+        sut.send(.cardDeleteRequested(Self.visa.id))
+        #expect(sut.state.cardError == nil)
+    }
+
+    @Test func newlySavedCardAppearsImmediately() async throws {
+        let (sut, store, _) = await makeSUT()
+        try await store.save(Self.visa)
+        #expect(sut.cardRows.count == 1)
+    }
+
+    @Test func rowsClearWhenUserChanges() async {
+        let (sut, store, repo) = await makeSUT(cards: [Self.visa])
+        sut.send(.cardDeleteRequested(Self.visa.id))
+        repo.replaceAll(with: [])   // yeni kullanıcının kartı yok
+        await store.reload()
+        #expect(sut.cardRows.isEmpty)
+        #expect(sut.pendingCardDeletionID == nil)
+    }
+}
+
+struct SavedCardRowContentTests {
+    @Test func expiryStringIsZeroPaddedTwoDigitYear() {
+        #expect(SavedCardRowContent.expiryString(month: 3, year: 2031) == "03/31")
+    }
+
+    @Test func maskedNumberShowsOnlyLast4() {
+        let summary = PaymentCardSummary(brand: .amex, last4: "0005", holderName: "ada", expiryMonth: 1, expiryYear: 2040)
+        let content = SavedCardRowContent(summary: summary, isExpired: false)
+        #expect(content.maskedNumber == "•••• 0005")
+        #expect(content.holderText == "ADA")
+        #expect(!content.accessibilityText.contains("••"))
     }
 }

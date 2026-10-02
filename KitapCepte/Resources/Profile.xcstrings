@@ -190,6 +190,106 @@
           }
         }
       }
+    },
+    "profile.cards.title": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kayıtlı Kartlar"
+          }
+        }
+      }
+    },
+    "profile.cards.empty": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Henüz kayıtlı kartın yok. Ödeme sırasında 'Kartı kaydet'i seçebilirsin."
+          }
+        }
+      }
+    },
+    "profile.cards.expired": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Süresi doldu"
+          }
+        }
+      }
+    },
+    "profile.cards.deleteQuestion": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kart silinsin mi?"
+          }
+        }
+      }
+    },
+    "profile.cards.deleteNo": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hayır"
+          }
+        }
+      }
+    },
+    "profile.cards.deleteYes": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Evet"
+          }
+        }
+      }
+    },
+    "profile.cards.deleteError": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kart silinemedi. Lütfen tekrar dene."
+          }
+        }
+      }
+    },
+    "profile.cards.delete": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kartı sil"
+          }
+        }
+      }
+    },
+    "profile.cards.expiry": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SKT %@"
+          }
+        }
+      }
+    },
+    "profile.cards.a11y": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ kartı, son dört hane %@, son kullanma %@"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

@@ -54,6 +54,8 @@ final class ProfileViewModel {
         var successMessage: String?
         var isLoading = false
         var isConfirmingSignOut = false
+        var pendingCardDeletionID: UUID?
+        var cardError: String?
     }
 
     enum Action {
@@ -62,20 +64,59 @@ final class ProfileViewModel {
         case confirmationChanged(String)
         case signOutTapped
         case signOutDismissed
+        case cardDeleteRequested(UUID)
+        case cardDeleteCancelled
     }
 
     private(set) var state = State()
     private let userProvider: () -> User?
     private let changePassword: ChangePasswordUseCase
     private let signOut: () async -> Void
+    private let savedCards: SavedCardsStore // MARK: Faz 8b
+    private let dateProvider: DateProviding
+    private let calendar: Calendar
 
-    init(userProvider: @escaping () -> User?, changePassword: ChangePasswordUseCase, signOut: @escaping () async -> Void) {
+    init(
+        userProvider: @escaping () -> User?,
+        changePassword: ChangePasswordUseCase,
+        savedCards: SavedCardsStore,
+        dateProvider: DateProviding = SystemDateProvider(),
+        calendar: Calendar = .current,
+        signOut: @escaping () async -> Void
+    ) {
         self.userProvider = userProvider
         self.changePassword = changePassword
+        self.savedCards = savedCards
+        self.dateProvider = dateProvider
+        self.calendar = calendar
         self.signOut = signOut
     }
 
     var user: User? { userProvider() }
+
+    // MARK: Faz 8b — Kayıtlı kartlar
+
+    /// Mağazadaki kartlardan satır metinleri; mağaza değişince (kayıt/silme/kullanıcı değişimi) otomatik güncellenir.
+    var cardRows: [SavedCardRowContent] {
+        let now = dateProvider.now
+        return savedCards.cards.map { SavedCardRowContent(summary: $0, isExpired: $0.isExpired(now: now, calendar: calendar)) }
+    }
+
+    /// Silinmiş/başka kullanıcıya ait bir kart için onay açık kalmaz.
+    var pendingCardDeletionID: UUID? {
+        state.pendingCardDeletionID.flatMap { id in savedCards.cards.contains { $0.id == id } ? id : nil }
+    }
+
+    func confirmCardDeletion() async {
+        guard let id = pendingCardDeletionID else { return }
+        state.pendingCardDeletionID = nil
+        do {
+            try await savedCards.delete(id: id)
+            state.cardError = nil
+        } catch {
+            state.cardError = Strings.Profile.cardDeleteError
+        }
+    }
 
     func send(_ action: Action) {
         switch action {
@@ -95,6 +136,11 @@ final class ProfileViewModel {
             state.isConfirmingSignOut = true
         case .signOutDismissed:
             state.isConfirmingSignOut = false
+        case .cardDeleteRequested(let id):
+            state.cardError = nil
+            state.pendingCardDeletionID = id
+        case .cardDeleteCancelled:
+            state.pendingCardDeletionID = nil
         }
     }
 
@@ -123,6 +169,8 @@ final class ProfileViewModel {
 
     func confirmSignOut() async {
         state.isConfirmingSignOut = false
+        state.pendingCardDeletionID = nil
+        state.cardError = nil
         await signOut()
     }
 

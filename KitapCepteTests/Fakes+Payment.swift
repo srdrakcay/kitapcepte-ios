@@ -59,6 +59,9 @@ final class FakeSavedCardRepository: SavedCardRepository {
 
     func cards() async -> [PaymentCardSummary] { stored }
 
+    /// Kullanıcı değişimini taklit eder.
+    func replaceAll(with cards: [PaymentCardSummary]) { stored = cards }
+
     func save(_ summary: PaymentCardSummary) async throws {
         if shouldFail { throw AppError.unknown }
         guard !stored.contains(where: { $0.isSameCard(as: summary) }) else { return }

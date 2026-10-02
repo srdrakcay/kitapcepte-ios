@@ -70,16 +70,10 @@ struct CartItemCard: View {
     }
 
     private var confirmation: some View {
-        HStack(spacing: theme.dimens.spacingS) {
-            Text(Strings.Cart.removeQuestion)
-                .font(theme.typography.callout.weight(.semibold))
-                .foregroundStyle(theme.colors.textPrimary)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            AppButton(title: Strings.Cart.removeNo, kind: .secondary, action: onCancelRemove)
-                .fixedSize(horizontal: true, vertical: false)
-            AppButton(title: Strings.Cart.removeYes, action: onConfirmRemove)
-                .fixedSize(horizontal: true, vertical: false)
-        }
+        InlineConfirmBar(
+            question: Strings.Cart.removeQuestion, noTitle: Strings.Cart.removeNo, yesTitle: Strings.Cart.removeYes,
+            onNo: onCancelRemove, onYes: onConfirmRemove
+        )
     }
 }
 

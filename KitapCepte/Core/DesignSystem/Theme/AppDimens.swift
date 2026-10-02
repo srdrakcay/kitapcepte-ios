@@ -42,6 +42,8 @@ struct AppDimens: Sendable {
     // Profil (Faz 8a)
     /// Profil avatarı çapı.
     let avatarSize: CGFloat = 72
+    /// Kayıtlı kart satırındaki ikon kutusu.
+    let cardBadgeSize: CGFloat = 44
 
     // Ödeme (Faz 7)
     /// Kart önizleme en/boy oranı (ISO/IEC 7810 ID-1).

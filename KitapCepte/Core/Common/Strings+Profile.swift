@@ -21,5 +21,23 @@ extension Strings {
         static let signOutMessage = String(localized: "profile.signOut.message", table: "Profile")
         static let signOutConfirm = String(localized: "profile.signOut.confirm", table: "Profile")
         static let signOutCancel = String(localized: "profile.signOut.cancel", table: "Profile")
+
+        // Kayıtlı Kartlar (Faz 8b)
+        static let cardsTitle = String(localized: "profile.cards.title", table: "Profile")
+        static let cardsEmpty = String(localized: "profile.cards.empty", table: "Profile")
+        static let cardExpired = String(localized: "profile.cards.expired", table: "Profile")
+        static let cardDeleteQuestion = String(localized: "profile.cards.deleteQuestion", table: "Profile")
+        static let cardDeleteNo = String(localized: "profile.cards.deleteNo", table: "Profile")
+        static let cardDeleteYes = String(localized: "profile.cards.deleteYes", table: "Profile")
+        static let cardDeleteError = String(localized: "profile.cards.deleteError", table: "Profile")
+        static let cardDelete = String(localized: "profile.cards.delete", table: "Profile")
+
+        static func cardExpiry(_ text: String) -> String {
+            String(format: String(localized: "profile.cards.expiry", table: "Profile"), text)
+        }
+
+        static func cardA11y(brand: String, last4: String, expiry: String) -> String {
+            String(format: String(localized: "profile.cards.a11y", table: "Profile"), brand, last4, expiry)
+        }
     }
 }
