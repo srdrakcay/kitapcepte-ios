@@ -31,6 +31,7 @@ struct RootView: View {
                     homeViewModel: container.makeHomeViewModel(),
                     favoritesViewModel: container.makeFavoritesViewModel(), // MARK: Faz 5
                     cartViewModel: container.makeCartViewModel(), // MARK: Faz 6
+                    profileViewModel: container.makeProfileViewModel(), // MARK: Faz 8a
                     makeDetailViewModel: container.makeDetailViewModel
                 )
             }

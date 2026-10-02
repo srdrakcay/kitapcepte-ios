@@ -82,13 +82,13 @@ struct SwiftDataFavoriteBooksTests {
 @MainActor
 struct GetFavoritesUseCaseTests {
     @Test func returnsRepositoryBooks() async throws {
-        let repo = FakeFavoritesListRepository(books: [.sample(id: "a"), .sample(id: "b")])
+        let repo = FakeFavoritesRepository(books: [.sample(id: "a"), .sample(id: "b")])
         let result = try await GetFavoritesUseCase(repository: repo)()
         #expect(result.map(\.id) == ["a", "b"])
     }
 
     @Test func propagatesRepositoryError() async {
-        let repo = FakeFavoritesListRepository()
+        let repo = FakeFavoritesRepository()
         repo.listError = .network
         await #expect(throws: AppError.network) { try await GetFavoritesUseCase(repository: repo)() }
     }
@@ -97,13 +97,13 @@ struct GetFavoritesUseCaseTests {
 @MainActor
 struct FavoritesViewModelTests {
     private struct Harness {
-        let repo: FakeFavoritesListRepository
+        let repo: FakeFavoritesRepository
         let store: FavoritesStore
         let sut: FavoritesViewModel
     }
 
     private func makeHarness(books: [Book] = []) -> Harness {
-        let repo = FakeFavoritesListRepository(books: books)
+        let repo = FakeFavoritesRepository(books: books)
         let store = FavoritesStore(repository: repo)
         let sut = FavoritesViewModel(getFavorites: GetFavoritesUseCase(repository: repo), favorites: store)
         return Harness(repo: repo, store: store, sut: sut)

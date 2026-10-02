@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Ortada başlık, solda/sağda opsiyonel öğeler. Varyantlar: `.home`, `.detail`, ileride sepet.
+/// Ortada başlık, solda/sağda opsiyonel öğeler. Varyantlar: `.home`, `.titled`, `.detail`.
 struct AppTopBar<Leading: View, Trailing: View>: View {
     @Environment(\.appTheme) private var theme
     let title: String
@@ -40,21 +40,16 @@ extension AppTopBar where Leading == EmptyView {
 }
 
 extension AppTopBar where Leading == EmptyView, Trailing == AppIconButton {
-    /// Home varyantı: ortada uygulama adı, sağda profil.
-    static func home(onProfile: @escaping () -> Void) -> AppTopBar {
-        AppTopBar(title: Strings.App.name) {
-            AppIconButton(systemImage: "person.fill", accessibilityLabel: Strings.Accessibility.profile, action: onProfile)
-        }
-    }
-}
-
-// MARK: Faz 5
-extension AppTopBar where Leading == EmptyView, Trailing == AppIconButton {
-    /// Sekme varyantı: ortada ekran başlığı, sağda profil (ör. Favoriler).
+    /// Sekme varyantı: ortada ekran başlığı, sağda profil (Favoriler, Sepet).
     static func titled(_ title: String, onProfile: @escaping () -> Void) -> AppTopBar {
         AppTopBar(title: title) {
             AppIconButton(systemImage: "person.fill", accessibilityLabel: Strings.Accessibility.profile, action: onProfile)
         }
+    }
+
+    /// Home varyantı: ortada uygulama adı, sağda profil.
+    static func home(onProfile: @escaping () -> Void) -> AppTopBar {
+        titled(Strings.App.name, onProfile: onProfile)
     }
 }
 

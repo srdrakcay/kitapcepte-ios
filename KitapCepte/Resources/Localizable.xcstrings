@@ -410,17 +410,6 @@
         }
       }
     },
-    "main.signOut": {
-      "extractionState": "stale",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Çıkış yap"
-          }
-        }
-      }
-    },
     "onboarding.next": {
       "extractionState": "stale",
       "localizations": {
@@ -741,26 +730,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Favorilerden çıkar"
-          }
-        }
-      }
-    },
-    "placeholder.title": {
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Çok yakında"
-          }
-        }
-      }
-    },
-    "placeholder.message": {
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bu bölüm sonraki fazda hazırlanacak."
           }
         }
       }

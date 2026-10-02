@@ -69,10 +69,6 @@ enum Strings {
         static let action = String(localized: "gate.action")
     }
 
-    enum Main {
-        static let signOut = String(localized: "main.signOut")
-    }
-
     enum Tab {
         static let home = String(localized: "tab.home")
         static let favorites = String(localized: "tab.favorites")
@@ -101,10 +97,5 @@ enum Strings {
         static let profile = String(localized: "a11y.profile")
         static let addFavorite = String(localized: "a11y.favorite.add")
         static let removeFavorite = String(localized: "a11y.favorite.remove")
-    }
-
-    enum Placeholder {
-        static let title = String(localized: "placeholder.title")
-        static let message = String(localized: "placeholder.message")
     }
 }

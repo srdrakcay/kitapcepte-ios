@@ -15,6 +15,8 @@ final class FakeAuthRepository: AuthRepository {
     var registerResult: Result<User, Error> = .success(User.sample)
     var loginResult: Result<User, Error> = .success(User.sample)
     var restoredUser: User?
+    var changePasswordResult: Result<Void, Error> = .success(())
+    private(set) var changeCalls: [(userID: UUID, current: String, new: String)] = []
     private(set) var logoutCount = 0
     private(set) var lastLoginEmail: String?
     private(set) var lastRegisterName: String?
@@ -31,6 +33,11 @@ final class FakeAuthRepository: AuthRepository {
 
     func restoreSession() async -> User? { restoredUser }
     func logout() async { logoutCount += 1 }
+
+    func changePassword(userID: UUID, current: String, new: String) async throws {
+        changeCalls.append((userID, current, new))
+        try changePasswordResult.get()
+    }
 }
 
 extension User {
@@ -68,8 +75,13 @@ final class FakeBookRepository: BookRepository, @unchecked Sendable {
 
 @MainActor
 final class FakeCartRepository: CartRepository {
-    private(set) var stored: [CartItem] = []
+    private(set) var stored: [CartItem]
     var shouldFail = false
+    private(set) var setQuantityCalls: [(bookID: String, quantity: Int)] = []
+
+    init(items: [CartItem] = []) {
+        stored = items
+    }
 
     func items() async -> [CartItem] { stored }
 
@@ -78,19 +90,55 @@ final class FakeCartRepository: CartRepository {
         guard !stored.contains(where: { $0.bookID == book.id }) else { return }
         stored.append(CartItem(book: book))
     }
+
+    func setQuantity(_ quantity: Int, for bookID: String) async throws {
+        if shouldFail { throw AppError.unknown }
+        setQuantityCalls.append((bookID, quantity))
+        guard let index = stored.firstIndex(where: { $0.bookID == bookID }) else { return }
+        stored[index].quantity = CartLimits.clamp(quantity)
+    }
+
+    func remove(_ bookID: String) async throws {
+        if shouldFail { throw AppError.unknown }
+        stored.removeAll { $0.bookID == bookID }
+    }
+
+    func clear() async throws {
+        if shouldFail { throw AppError.unknown }
+        stored.removeAll()
+    }
 }
 
 @MainActor
 final class FakeFavoritesRepository: FavoritesRepository {
-    var ids: Set<String> = []
+    var ids: Set<String>
+    /// Favori kitap listesi (en son eklenen başta).
+    private(set) var books: [Book]
     var shouldFail = false
+    var listError: AppError?
+    private(set) var listCallCount = 0
+
+    init(books: [Book] = []) {
+        self.books = books
+        ids = Set(books.map(\.id))
+    }
 
     func favoriteIDs() async -> Set<String> { ids }
 
+    func favoriteBooks() async throws -> [Book] {
+        listCallCount += 1
+        if let listError { throw listError }
+        return books
+    }
+
     func toggle(_ book: Book) async throws -> Bool {
         if shouldFail { throw AppError.unknown }
-        if ids.remove(book.id) != nil { return false }
+        if ids.remove(book.id) != nil {
+            books.removeAll { $0.id == book.id }
+            return false
+        }
         ids.insert(book.id)
+        books.insert(book, at: 0)
         return true
     }
 }

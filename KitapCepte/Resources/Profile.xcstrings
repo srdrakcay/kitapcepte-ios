@@ -1,0 +1,196 @@
+{
+  "sourceLanguage": "tr",
+  "strings": {
+    "profile.title": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Profil"
+          }
+        }
+      }
+    },
+    "profile.unavailable": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Profil bilgisi bulunamadı."
+          }
+        }
+      }
+    },
+    "profile.account.title": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesap bilgileri"
+          }
+        }
+      }
+    },
+    "profile.password.title": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şifre değiştir"
+          }
+        }
+      }
+    },
+    "profile.password.submit": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şifreyi güncelle"
+          }
+        }
+      }
+    },
+    "profile.password.success": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şifren başarıyla güncellendi."
+          }
+        }
+      }
+    },
+    "profile.field.current": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mevcut şifre"
+          }
+        }
+      }
+    },
+    "profile.field.new": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni şifre"
+          }
+        }
+      }
+    },
+    "profile.field.confirm": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni şifre (tekrar)"
+          }
+        }
+      }
+    },
+    "profile.error.currentEmpty": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mevcut şifreni gir."
+          }
+        }
+      }
+    },
+    "profile.error.currentWrong": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mevcut şifre hatalı."
+          }
+        }
+      }
+    },
+    "profile.error.newShort": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni şifre en az 6 karakter olmalı."
+          }
+        }
+      }
+    },
+    "profile.error.newSame": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni şifre mevcut şifreden farklı olmalı."
+          }
+        }
+      }
+    },
+    "profile.error.mismatch": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şifreler eşleşmiyor."
+          }
+        }
+      }
+    },
+    "profile.signOut.button": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çıkış yap"
+          }
+        }
+      }
+    },
+    "profile.signOut.title": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çıkış yapılsın mı?"
+          }
+        }
+      }
+    },
+    "profile.signOut.message": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesabından çıkış yapacaksın. Tekrar giriş yapman gerekecek."
+          }
+        }
+      }
+    },
+    "profile.signOut.confirm": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Evet, çıkış yap"
+          }
+        }
+      }
+    },
+    "profile.signOut.cancel": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vazgeç"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

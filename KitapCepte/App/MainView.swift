@@ -9,6 +9,7 @@ struct MainView: View {
     @State private var homeViewModel: HomeViewModel
     @State private var favoritesViewModel: FavoritesViewModel // MARK: Faz 5
     @State private var cartViewModel: CartViewModel // MARK: Faz 6
+    @State private var profileViewModel: ProfileViewModel // MARK: Faz 8a
     private let makeDetailViewModel: (Book) -> DetailViewModel
 
     init(
@@ -16,8 +17,10 @@ struct MainView: View {
         homeViewModel: HomeViewModel,
         favoritesViewModel: FavoritesViewModel, // MARK: Faz 5
         cartViewModel: CartViewModel, // MARK: Faz 6
+        profileViewModel: ProfileViewModel, // MARK: Faz 8a
         makeDetailViewModel: @escaping (Book) -> DetailViewModel
     ) {
+        _profileViewModel = State(initialValue: profileViewModel) // MARK: Faz 8a
         _viewModel = State(initialValue: viewModel)
         _homeViewModel = State(initialValue: homeViewModel)
         _favoritesViewModel = State(initialValue: favoritesViewModel) // MARK: Faz 5
@@ -64,7 +67,8 @@ struct MainView: View {
                         onCheckout: viewModel.openPayment
                     )
                 }
-                tab(.profile) { ProfileTabPlaceholder() }
+                // MARK: Faz 8a
+                tab(.profile) { ProfileView(viewModel: profileViewModel) }
             }
         }
         // Tab bar listenin üstünde yüzer; liste bar'ın arkasından kayar (çevresi şeffaf).
@@ -94,27 +98,5 @@ struct MainView: View {
             .opacity(isSelected ? 1 : 0)
             .allowsHitTesting(isSelected)
             .accessibilityHidden(!isSelected)
-    }
-}
-
-/// Henüz yapılmamış sekmeler için geçici ekran.
-private struct ComingSoonView: View {
-    var body: some View {
-        EmptyStateView(title: Strings.Placeholder.title, message: Strings.Placeholder.message, systemImage: "hammer")
-    }
-}
-
-/// Faz 8'de gerçek Profil ekranıyla değişir; şimdilik çıkış yapabilmek için.
-private struct ProfileTabPlaceholder: View {
-    @Environment(SessionManager.self) private var sessionManager
-
-    var body: some View {
-        VStack {
-            ComingSoonView()
-            AppButton(title: Strings.Main.signOut, kind: .secondary) {
-                Task { await sessionManager.signOut() }
-            }
-            .padding(.horizontal, 24)
-        }
     }
 }

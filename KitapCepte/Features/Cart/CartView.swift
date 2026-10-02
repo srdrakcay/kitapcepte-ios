@@ -8,9 +8,7 @@ struct CartView: View {
 
     var body: some View {
         VStack(spacing: theme.dimens.spacingM) {
-            AppTopBar(title: Strings.Cart.title) {
-                AppIconButton(systemImage: "person.fill", accessibilityLabel: Strings.Accessibility.profile, action: onProfile)
-            }
+            AppTopBar.titled(Strings.Cart.title, onProfile: onProfile)
             content
         }
         .task { await viewModel.send(.onAppear) }

@@ -38,4 +38,8 @@ struct AppDimens: Sendable {
     // Sepet (Faz 6)
     /// Sepet satırındaki kapak genişliği.
     let cartCoverWidth: CGFloat = 76
+
+    // Profil (Faz 8a)
+    /// Profil avatarı çapı.
+    let avatarSize: CGFloat = 72
 }

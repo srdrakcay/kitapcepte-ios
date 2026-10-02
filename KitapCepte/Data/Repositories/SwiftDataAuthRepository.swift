@@ -50,6 +50,17 @@ final class SwiftDataAuthRepository: AuthRepository {
         secureStore.remove(Self.sessionKey)
     }
 
+    func changePassword(userID: UUID, current: String, new: String) async throws {
+        let descriptor = FetchDescriptor<AccountEntity>(predicate: #Predicate { $0.id == userID })
+        guard let entity = try context.fetch(descriptor).first,
+              PasswordHasher.verify(current, salt: entity.salt, hash: entity.passwordHash)
+        else { throw AuthError.invalidCredentials }
+        let salt = PasswordHasher.makeSalt()
+        entity.salt = salt
+        entity.passwordHash = PasswordHasher.hash(new, salt: salt)
+        try context.save()
+    }
+
     private func account(email: String) throws -> AccountEntity? {
         let descriptor = FetchDescriptor<AccountEntity>(predicate: #Predicate { $0.email == email })
         return try context.fetch(descriptor).first

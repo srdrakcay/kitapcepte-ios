@@ -136,30 +136,30 @@ struct SwiftDataCartManagementTests {
 @MainActor
 struct CartUseCaseTests {
     @Test func getReturnsRepositoryItems() async {
-        let repo = FakeCartManagedRepository(items: [.sample(id: "a")])
+        let repo = FakeCartRepository(items: [.sample(id: "a")])
         #expect(await GetCartUseCase(repository: repo)().map(\.bookID) == ["a"])
     }
 
     @Test func updateQuantityDelegates() async throws {
-        let repo = FakeCartManagedRepository(items: [.sample(id: "a")])
+        let repo = FakeCartRepository(items: [.sample(id: "a")])
         try await UpdateCartQuantityUseCase(repository: repo)(bookID: "a", quantity: 5)
         #expect(repo.stored.first?.quantity == 5)
     }
 
     @Test func removeDelegates() async throws {
-        let repo = FakeCartManagedRepository(items: [.sample(id: "a"), .sample(id: "b")])
+        let repo = FakeCartRepository(items: [.sample(id: "a"), .sample(id: "b")])
         try await RemoveFromCartUseCase(repository: repo)(bookID: "a")
         #expect(repo.stored.map(\.bookID) == ["b"])
     }
 
     @Test func clearDelegates() async throws {
-        let repo = FakeCartManagedRepository(items: [.sample(id: "a")])
+        let repo = FakeCartRepository(items: [.sample(id: "a")])
         try await ClearCartUseCase(repository: repo)()
         #expect(repo.stored.isEmpty)
     }
 
     @Test func errorsPropagate() async {
-        let repo = FakeCartManagedRepository(items: [.sample()])
+        let repo = FakeCartRepository(items: [.sample()])
         repo.shouldFail = true
         await #expect(throws: AppError.unknown) { try await UpdateCartQuantityUseCase(repository: repo)(bookID: "a", quantity: 2) }
         await #expect(throws: AppError.unknown) { try await RemoveFromCartUseCase(repository: repo)(bookID: "a") }
@@ -170,7 +170,7 @@ struct CartUseCaseTests {
 @MainActor
 struct CartStoreManagementTests {
     @Test func badgeCountSumsQuantitiesAfterSetQuantity() async throws {
-        let repo = FakeCartManagedRepository(items: [.sample(id: "a"), .sample(id: "b")])
+        let repo = FakeCartRepository(items: [.sample(id: "a"), .sample(id: "b")])
         let sut = CartStore(repository: repo)
         await sut.reload()
         #expect(sut.count == 2)
@@ -180,7 +180,7 @@ struct CartStoreManagementTests {
     }
 
     @Test func removeUpdatesCountAndContains() async throws {
-        let repo = FakeCartManagedRepository(items: [.sample(id: "a", quantity: 3), .sample(id: "b")])
+        let repo = FakeCartRepository(items: [.sample(id: "a", quantity: 3), .sample(id: "b")])
         let sut = CartStore(repository: repo)
         await sut.reload()
         try await sut.remove("a")
@@ -189,7 +189,7 @@ struct CartStoreManagementTests {
     }
 
     @Test func clearEmptiesStore() async throws {
-        let repo = FakeCartManagedRepository(items: [.sample(id: "a", quantity: 3)])
+        let repo = FakeCartRepository(items: [.sample(id: "a", quantity: 3)])
         let sut = CartStore(repository: repo)
         await sut.reload()
         try await sut.clear()
@@ -198,7 +198,7 @@ struct CartStoreManagementTests {
     }
 
     @Test func failedMutationThrowsAndLeavesStateUntouched() async {
-        let repo = FakeCartManagedRepository(items: [.sample(id: "a")])
+        let repo = FakeCartRepository(items: [.sample(id: "a")])
         let sut = CartStore(repository: repo)
         await sut.reload()
         repo.shouldFail = true
@@ -209,8 +209,8 @@ struct CartStoreManagementTests {
 
 @MainActor
 struct CartViewModelTests {
-    private func makeSUT(items: [CartItem] = []) -> (CartViewModel, FakeCartManagedRepository, CartStore) {
-        let repo = FakeCartManagedRepository(items: items)
+    private func makeSUT(items: [CartItem] = []) -> (CartViewModel, FakeCartRepository, CartStore) {
+        let repo = FakeCartRepository(items: items)
         let store = CartStore(repository: repo)
         return (CartViewModel(cart: store), repo, store)
     }
