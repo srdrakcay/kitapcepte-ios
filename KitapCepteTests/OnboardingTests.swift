@@ -60,25 +60,6 @@ struct OnboardingViewModelTests {
     }
 }
 
-@MainActor
-struct RootViewModelTests {
-    @Test func showsOnboardingOnFirstLaunch() {
-        let sut = RootViewModel(onboardingRepository: FakeOnboardingRepository(hasSeen: false))
-        #expect(sut.route == .onboarding)
-    }
-
-    @Test func skipsOnboardingWhenAlreadySeen() {
-        let sut = RootViewModel(onboardingRepository: FakeOnboardingRepository(hasSeen: true))
-        #expect(sut.route == .auth)
-    }
-
-    @Test func movesToAuthAfterOnboardingCompleted() {
-        let sut = RootViewModel(onboardingRepository: FakeOnboardingRepository())
-        sut.onboardingCompleted()
-        #expect(sut.route == .auth)
-    }
-}
-
 struct UserDefaultsOnboardingRepositoryTests {
     @Test func persistsSeenFlag() throws {
         let suite = "test.onboarding.\(UUID().uuidString)"

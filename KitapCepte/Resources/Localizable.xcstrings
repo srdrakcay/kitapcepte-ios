@@ -12,24 +12,123 @@
         }
       }
     },
-    "auth.placeholder.message" : {
+    "auth.continueAsGuest" : {
       "extractionState" : "stale",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bu ekran bir sonraki fazda hazırlanacak."
+            "value" : "Misafir olarak devam et"
           }
         }
       }
     },
-    "auth.placeholder.title" : {
+    "auth.error.emailTaken" : {
       "extractionState" : "stale",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Giriş ekranı"
+            "value" : "Bu e-posta ile zaten bir hesap var."
+          }
+        }
+      }
+    },
+    "auth.error.invalidCredentials" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E-posta veya şifre hatalı."
+          }
+        }
+      }
+    },
+    "auth.haveAccount" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zaten hesabın var mı? Giriş yap"
+          }
+        }
+      }
+    },
+    "auth.login.submit" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giriş yap"
+          }
+        }
+      }
+    },
+    "auth.login.title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tekrar hoş geldin"
+          }
+        }
+      }
+    },
+    "auth.loginWithMail" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mail ile giriş yap"
+          }
+        }
+      }
+    },
+    "auth.noAccount" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hesabın yok mu? Kayıt ol"
+          }
+        }
+      }
+    },
+    "auth.register.submit" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kayıt ol"
+          }
+        }
+      }
+    },
+    "auth.register.title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hesap oluştur"
+          }
+        }
+      }
+    },
+    "auth.welcome.subtitle" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Binlerce kitap, tek dokunuş uzağında."
           }
         }
       }
@@ -144,6 +243,127 @@
         }
       }
     },
+    "field.confirmPassword" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şifre tekrar"
+          }
+        }
+      }
+    },
+    "field.email" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E-posta"
+          }
+        }
+      }
+    },
+    "field.name" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ad soyad"
+          }
+        }
+      }
+    },
+    "field.password" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şifre"
+          }
+        }
+      }
+    },
+    "gate.action" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Üye ol / Giriş yap"
+          }
+        }
+      }
+    },
+    "gate.message" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu özelliği kullanmak için giriş yapmalı veya üye olmalısın."
+          }
+        }
+      }
+    },
+    "gate.title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Üye olman gerekiyor"
+          }
+        }
+      }
+    },
+    "main.greeting" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Merhaba, %@"
+          }
+        }
+      }
+    },
+    "main.guest" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Misafir olarak geziyorsun"
+          }
+        }
+      }
+    },
+    "main.restricted" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favoriler (üyelere özel)"
+          }
+        }
+      }
+    },
+    "main.signOut" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çıkış yap"
+          }
+        }
+      }
+    },
     "onboarding.next" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -239,6 +459,61 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Başla"
+          }
+        }
+      }
+    },
+    "validation.email.invalid" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geçerli bir e-posta gir."
+          }
+        }
+      }
+    },
+    "validation.name.empty" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ad soyad boş olamaz."
+          }
+        }
+      }
+    },
+    "validation.password.empty" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şifre boş olamaz."
+          }
+        }
+      }
+    },
+    "validation.password.mismatch" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şifreler eşleşmiyor."
+          }
+        }
+      }
+    },
+    "validation.password.short" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şifre en az 6 karakter olmalı."
           }
         }
       }

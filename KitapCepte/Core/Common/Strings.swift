@@ -35,7 +35,44 @@ enum Strings {
     }
 
     enum Auth {
-        static let placeholderTitle = String(localized: "auth.placeholder.title")
-        static let placeholderMessage = String(localized: "auth.placeholder.message")
+        static let welcomeSubtitle = String(localized: "auth.welcome.subtitle")
+        static let loginWithMail = String(localized: "auth.loginWithMail")
+        static let continueAsGuest = String(localized: "auth.continueAsGuest")
+        static let loginTitle = String(localized: "auth.login.title")
+        static let loginSubmit = String(localized: "auth.login.submit")
+        static let registerTitle = String(localized: "auth.register.title")
+        static let registerSubmit = String(localized: "auth.register.submit")
+        static let noAccount = String(localized: "auth.noAccount")
+        static let haveAccount = String(localized: "auth.haveAccount")
+        static let invalidCredentials = String(localized: "auth.error.invalidCredentials")
+        static let emailTaken = String(localized: "auth.error.emailTaken")
+    }
+
+    enum Field {
+        static let name = String(localized: "field.name")
+        static let email = String(localized: "field.email")
+        static let password = String(localized: "field.password")
+        static let confirmPassword = String(localized: "field.confirmPassword")
+    }
+
+    enum Validation {
+        static let nameEmpty = String(localized: "validation.name.empty")
+        static let emailInvalid = String(localized: "validation.email.invalid")
+        static let passwordEmpty = String(localized: "validation.password.empty")
+        static let passwordShort = String(localized: "validation.password.short")
+        static let passwordMismatch = String(localized: "validation.password.mismatch")
+    }
+
+    enum Gate {
+        static let title = String(localized: "gate.title")
+        static let message = String(localized: "gate.message")
+        static let action = String(localized: "gate.action")
+    }
+
+    enum Main {
+        static func greeting(_ name: String) -> String { String(format: String(localized: "main.greeting"), name) }
+        static let guest = String(localized: "main.guest")
+        static let restricted = String(localized: "main.restricted")
+        static let signOut = String(localized: "main.signOut")
     }
 }
