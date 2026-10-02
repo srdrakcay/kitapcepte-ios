@@ -7,15 +7,18 @@ struct MainView: View {
     @Environment(CartStore.self) private var cart
     @State private var viewModel: MainViewModel
     @State private var homeViewModel: HomeViewModel
+    @State private var favoritesViewModel: FavoritesViewModel // MARK: Faz 5
     private let makeDetailViewModel: (Book) -> DetailViewModel
 
     init(
         viewModel: MainViewModel,
         homeViewModel: HomeViewModel,
+        favoritesViewModel: FavoritesViewModel, // MARK: Faz 5
         makeDetailViewModel: @escaping (Book) -> DetailViewModel
     ) {
         _viewModel = State(initialValue: viewModel)
         _homeViewModel = State(initialValue: homeViewModel)
+        _favoritesViewModel = State(initialValue: favoritesViewModel) // MARK: Faz 5
         self.makeDetailViewModel = makeDetailViewModel
     }
 
@@ -42,7 +45,14 @@ struct MainView: View {
                         onSelectBook: viewModel.openDetail
                     )
                 }
-                tab(.favorites) { ComingSoonView() }
+                // MARK: Faz 5
+                tab(.favorites) {
+                    FavoritesView(
+                        viewModel: favoritesViewModel,
+                        onProfile: { viewModel.select(.profile) },
+                        onSelectBook: viewModel.openDetail
+                    )
+                }
                 tab(.cart) { ComingSoonView() }
                 tab(.profile) { ProfileTabPlaceholder() }
             }
