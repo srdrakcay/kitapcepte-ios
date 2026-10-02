@@ -22,6 +22,12 @@ struct AppDimens: Sendable {
     let iconL: CGFloat = 40
     let borderWidth: CGFloat = 1
     let badgeSize: CGFloat = 18
+    /// Kitap kapağı en/boy oranı (genişlik / yükseklik).
+    let coverAspectRatio: CGFloat = 2.0 / 3.0
+    /// Detay ekranı büyük kapak yüksekliği.
+    let detailCoverHeight: CGFloat = 320
+    /// Benzer kitaplar yatay listesindeki kart genişliği.
+    let similarCardWidth: CGFloat = 148
 
     let shadowRadius: CGFloat = 16
     let shadowOffsetY: CGFloat = 4

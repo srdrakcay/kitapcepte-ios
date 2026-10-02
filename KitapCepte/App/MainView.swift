@@ -4,22 +4,32 @@ import SwiftUI
 struct MainView: View {
     @Environment(SessionManager.self) private var sessionManager
     @Environment(FavoritesStore.self) private var favorites
-    @Environment(GuestGate.self) private var gate
+    @Environment(CartStore.self) private var cart
     @State private var viewModel: MainViewModel
     @State private var homeViewModel: HomeViewModel
+    private let makeDetailViewModel: (Book) -> DetailViewModel
 
-    init(viewModel: MainViewModel, homeViewModel: HomeViewModel) {
+    init(
+        viewModel: MainViewModel,
+        homeViewModel: HomeViewModel,
+        makeDetailViewModel: @escaping (Book) -> DetailViewModel
+    ) {
         _viewModel = State(initialValue: viewModel)
         _homeViewModel = State(initialValue: homeViewModel)
+        self.makeDetailViewModel = makeDetailViewModel
     }
 
     var body: some View {
-        // Tek NavigationStack: Faz 4'te push edilen Detay tab bar'ın üstünü tamamen kaplar.
-        NavigationStack {
+        // Tek NavigationStack: push edilen Detay tab bar'ın üstünü tamamen kaplar.
+        NavigationStack(path: Binding(get: { viewModel.path }, set: { viewModel.updatePath($0) })) {
             scaffold
                 .toolbar(.hidden, for: .navigationBar)
+                .navigationDestination(for: AppRoute.self, destination: destination)
         }
-        .task(id: sessionManager.currentUser?.id) { await favorites.reload() }
+        .task(id: sessionManager.currentUser?.id) {
+            await favorites.reload()
+            await cart.reload()
+        }
     }
 
     private var scaffold: some View {
@@ -29,7 +39,7 @@ struct MainView: View {
                     HomeView(
                         viewModel: homeViewModel,
                         onProfile: { viewModel.select(.profile) },
-                        onSelectBook: { _ in gate.require {} } // Faz 4: detay ekranına yönlenir
+                        onSelectBook: viewModel.openDetail
                     )
                 }
                 tab(.favorites) { ComingSoonView() }
@@ -39,7 +49,19 @@ struct MainView: View {
         }
         // Tab bar listenin üstünde yüzer; liste bar'ın arkasından kayar (çevresi şeffaf).
         .safeAreaInset(edge: .bottom, spacing: 0) {
-            AppTabBar(selection: viewModel.selectedTab, cartCount: 0, onSelect: viewModel.select)
+            AppTabBar(selection: viewModel.selectedTab, cartCount: cart.count, onSelect: viewModel.select)
+        }
+    }
+
+    @ViewBuilder
+    private func destination(_ route: AppRoute) -> some View {
+        switch route {
+        case .detail(let book):
+            DetailView(
+                viewModel: makeDetailViewModel(book),
+                onBack: viewModel.pop,
+                onSelectBook: viewModel.openDetail
+            )
         }
     }
 

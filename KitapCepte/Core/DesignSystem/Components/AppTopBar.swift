@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Ortada başlık, solda/sağda opsiyonel öğeler. Varyantlar: `.home`, ileride detay/sepet.
+/// Ortada başlık, solda/sağda opsiyonel öğeler. Varyantlar: `.home`, `.detail`, ileride sepet.
 struct AppTopBar<Leading: View, Trailing: View>: View {
     @Environment(\.appTheme) private var theme
     let title: String
@@ -18,6 +18,9 @@ struct AppTopBar<Leading: View, Trailing: View>: View {
             Text(title)
                 .font(theme.typography.title)
                 .foregroundStyle(theme.colors.textOnPrimary)
+                .lineLimit(1)
+                // Başlık, iki yandaki butonlarla çakışmasın.
+                .padding(.horizontal, theme.dimens.minTouchTarget)
                 .accessibilityAddTraits(.isHeader)
             HStack {
                 leading
@@ -42,5 +45,18 @@ extension AppTopBar where Leading == EmptyView, Trailing == AppIconButton {
         AppTopBar(title: Strings.App.name) {
             AppIconButton(systemImage: "person.fill", accessibilityLabel: Strings.Accessibility.profile, action: onProfile)
         }
+    }
+}
+
+extension AppTopBar where Leading == AppIconButton, Trailing == FavoriteButton {
+    /// Detay varyantı: solda geri, ortada başlık, sağda favori.
+    static func detail(
+        title: String, isFavorite: Bool, onBack: @escaping () -> Void, onToggleFavorite: @escaping () -> Void
+    ) -> AppTopBar {
+        AppTopBar(
+            title: title,
+            leading: { AppIconButton(systemImage: "chevron.left", accessibilityLabel: Strings.Accessibility.back, action: onBack) },
+            trailing: { FavoriteButton(isFavorite: isFavorite, action: onToggleFavorite) }
+        )
     }
 }

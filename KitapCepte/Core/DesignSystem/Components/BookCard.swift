@@ -8,15 +8,13 @@ struct BookCard: View {
     let onSelect: () -> Void
     let onToggleFavorite: () -> Void
 
-    private let coverAspectRatio: CGFloat = 2.0 / 3.0
-
     var body: some View {
         VStack(spacing: theme.dimens.spacingS) {
             Button(action: onSelect) {
                 VStack(alignment: .leading, spacing: theme.dimens.spacingS) {
                     // Boyutu kapağın kendi oranı değil, sabit oran belirler (kartlar hizalı kalır).
                     Color.clear
-                        .aspectRatio(coverAspectRatio, contentMode: .fit)
+                        .aspectRatio(theme.dimens.coverAspectRatio, contentMode: .fit)
                         .overlay { AppAsyncImage(url: book.coverURL(.medium)) }
                         .clipShape(theme.shapes.control)
                         .overlay(alignment: .topLeading) {

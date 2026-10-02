@@ -85,7 +85,19 @@ enum Strings {
         static let topItem = String(localized: "badge.topItem")
     }
 
+    enum Detail {
+        static let title = String(localized: "detail.title")
+        static let descriptionTitle = String(localized: "detail.description.title")
+        static let descriptionEmpty = String(localized: "detail.description.empty")
+        static let similarTitle = String(localized: "detail.similar.title")
+        static let similarEmpty = String(localized: "detail.similar.empty")
+        static let price = String(localized: "detail.price")
+        static let addToCart = String(localized: "detail.addToCart")
+        static let inCart = String(localized: "detail.inCart")
+    }
+
     enum Accessibility {
+        static let back = String(localized: "a11y.back")
         static let profile = String(localized: "a11y.profile")
         static let addFavorite = String(localized: "a11y.favorite.add")
         static let removeFavorite = String(localized: "a11y.favorite.remove")

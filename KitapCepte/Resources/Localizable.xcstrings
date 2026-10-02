@@ -1,6 +1,96 @@
 {
   "sourceLanguage": "tr",
   "strings": {
+    "detail.title": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kitap Detayı"
+          }
+        }
+      }
+    },
+    "detail.description.title": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Açıklama"
+          }
+        }
+      }
+    },
+    "detail.description.empty": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu kitap için açıklama bulunmuyor."
+          }
+        }
+      }
+    },
+    "detail.similar.title": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Benzer Kitaplar"
+          }
+        }
+      }
+    },
+    "detail.similar.empty": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Benzer kitap bulunamadı."
+          }
+        }
+      }
+    },
+    "detail.price": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fiyat"
+          }
+        }
+      }
+    },
+    "detail.addToCart": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sepete ekle"
+          }
+        }
+      }
+    },
+    "detail.inCart": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sepette"
+          }
+        }
+      }
+    },
+    "a11y.back": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geri"
+          }
+        }
+      }
+    },
     "app.name": {
       "extractionState": "stale",
       "localizations": {

@@ -11,6 +11,7 @@ struct AppContainer {
     let sessionManager: SessionManager
     let guestGate: GuestGate
     let favoritesStore: FavoritesStore
+    let cartStore: CartStore
     let modelContainer: ModelContainer
 
     static func live() -> AppContainer {
@@ -25,6 +26,10 @@ struct AppContainer {
             context: context,
             userIDProvider: { [weak sessionManager] in sessionManager?.currentUser?.id }
         )
+        let cartRepository = SwiftDataCartRepository(
+            context: context,
+            userIDProvider: { [weak sessionManager] in sessionManager?.currentUser?.id }
+        )
         let apiClient = URLSessionAPIClient(session: .shared)
         return AppContainer(
             theme: .standard,
@@ -34,6 +39,7 @@ struct AppContainer {
             sessionManager: sessionManager,
             guestGate: GuestGate(sessionManager: sessionManager),
             favoritesStore: FavoritesStore(repository: favoritesRepository),
+            cartStore: CartStore(repository: cartRepository),
             modelContainer: modelContainer
         )
     }
@@ -62,8 +68,19 @@ struct AppContainer {
         HomeViewModel(getBooks: GetBooksUseCase(repository: bookRepository))
     }
 
+    func makeDetailViewModel(book: Book) -> DetailViewModel {
+        DetailViewModel(
+            book: book,
+            getDescription: GetBookDescriptionUseCase(repository: bookRepository),
+            getSimilarBooks: GetSimilarBooksUseCase(repository: bookRepository),
+            favorites: favoritesStore,
+            cart: cartStore,
+            gate: guestGate
+        )
+    }
+
     private static func makeModelContainer() -> ModelContainer {
-        let schema = Schema([AccountEntity.self, FavoriteEntity.self])
+        let schema = Schema([AccountEntity.self, FavoriteEntity.self, CartItemEntity.self])
         if let container = try? ModelContainer(for: schema) { return container }
         // Disk deposu açılamazsa uygulama bellek içi depoyla çalışmaya devam eder.
         let fallback = ModelConfiguration(isStoredInMemoryOnly: true)

@@ -8,4 +8,8 @@ struct AppShapes: Sendable {
     var control: RoundedRectangle { RoundedRectangle(cornerRadius: dimens.radiusS, style: .continuous) }
     var sheet: RoundedRectangle { RoundedRectangle(cornerRadius: dimens.radiusL, style: .continuous) }
     var pill: Capsule { Capsule() }
+    /// Ekranın altına yapışan bar (üst köşeleri yuvarlak).
+    var bottomBar: UnevenRoundedRectangle {
+        UnevenRoundedRectangle(topLeadingRadius: dimens.radiusL, topTrailingRadius: dimens.radiusL, style: .continuous)
+    }
 }

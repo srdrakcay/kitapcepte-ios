@@ -40,10 +40,10 @@ extension User {
 extension Book {
     static func sample(
         id: String = "/works/OL1W", title: String = "The Hobbit", price: Decimal = 129.9,
-        isTopItem: Bool = false, coverID: Int? = 42
+        isTopItem: Bool = false, coverID: Int? = 42, authorKeys: [String] = [], subject: BookSubject? = nil
     ) -> Book {
         Book(id: id, title: title, authors: ["J.R.R. Tolkien"], coverID: coverID,
-             firstPublishYear: 1937, price: price, isTopItem: isTopItem)
+             firstPublishYear: 1937, price: price, isTopItem: isTopItem, authorKeys: authorKeys, subject: subject)
     }
 }
 
@@ -57,6 +57,26 @@ final class FakeBookRepository: BookRepository, @unchecked Sendable {
     func books(subject: BookSubject, page: Int) async throws -> BookPage {
         lock.withLock { _calls.append((subject, page)) }
         return try await handler(subject, page)
+    }
+
+    var descriptionHandler: @Sendable (Book) async throws -> String? = { _ in nil }
+    var similarHandler: @Sendable (Book, Int) async throws -> [Book] = { _, _ in [] }
+
+    func description(for book: Book) async throws -> String? { try await descriptionHandler(book) }
+    func similarBooks(to book: Book, limit: Int) async throws -> [Book] { try await similarHandler(book, limit) }
+}
+
+@MainActor
+final class FakeCartRepository: CartRepository {
+    private(set) var stored: [CartItem] = []
+    var shouldFail = false
+
+    func items() async -> [CartItem] { stored }
+
+    func add(_ book: Book) async throws {
+        if shouldFail { throw AppError.unknown }
+        guard !stored.contains(where: { $0.bookID == book.id }) else { return }
+        stored.append(CartItem(book: book))
     }
 }
 
@@ -78,12 +98,41 @@ final class FakeFavoritesRepository: FavoritesRepository {
 final class StubOpenLibraryService: OpenLibraryServicing, @unchecked Sendable {
     private let lock = NSLock()
     private var _callCount = 0
+    private var _queries: [String] = []
     var response = SearchResponseDTO(numFound: 0, docs: [])
+    var authorResponse = SearchResponseDTO(numFound: 0, docs: [])
+    var workResult: Result<WorkDTO, Error> = .success(WorkDTO(description: nil))
 
     var callCount: Int { lock.withLock { _callCount } }
+    /// Yapılan isteklerin özeti: `subject:x`, `author:x`, `work:x`.
+    var queries: [String] { lock.withLock { _queries } }
+
+    private func record(_ query: String) {
+        lock.withLock {
+            _callCount += 1
+            _queries.append(query)
+        }
+    }
 
     func searchBooks(subject: String, page: Int, limit: Int) async throws -> SearchResponseDTO {
-        lock.withLock { _callCount += 1 }
+        record("subject:\(subject)")
         return response
+    }
+
+    func searchBooks(authorKey: String, limit: Int) async throws -> SearchResponseDTO {
+        record("author:\(authorKey)")
+        return authorResponse
+    }
+
+    func work(key workKey: String) async throws -> WorkDTO {
+        record("work:\(workKey)")
+        return try workResult.get()
+    }
+}
+
+extension BookDocDTO {
+    static func sample(key: String, title: String = "T", authorKey: [String]? = nil) -> BookDocDTO {
+        BookDocDTO(key: key, title: title, authorName: nil, authorKey: authorKey, coverI: nil,
+                   firstPublishYear: nil, editionCount: nil, language: nil)
     }
 }
