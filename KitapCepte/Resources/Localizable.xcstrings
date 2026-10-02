@@ -1,17 +1,248 @@
 {
   "sourceLanguage" : "tr",
-  "version" : "1.0",
   "strings" : {
-    "app.name" : { "localizations" : { "tr" : { "stringUnit" : { "state" : "translated", "value" : "Kitap Cepte" } } } },
-    "common.retry" : { "localizations" : { "tr" : { "stringUnit" : { "state" : "translated", "value" : "Tekrar dene" } } } },
-    "common.loading" : { "localizations" : { "tr" : { "stringUnit" : { "state" : "translated", "value" : "Yükleniyor…" } } } },
-    "common.cancel" : { "localizations" : { "tr" : { "stringUnit" : { "state" : "translated", "value" : "Vazgeç" } } } },
-    "common.ok" : { "localizations" : { "tr" : { "stringUnit" : { "state" : "translated", "value" : "Tamam" } } } },
-    "common.error.title" : { "localizations" : { "tr" : { "stringUnit" : { "state" : "translated", "value" : "Bir şeyler ters gitti" } } } },
-    "common.empty.title" : { "localizations" : { "tr" : { "stringUnit" : { "state" : "translated", "value" : "Burada henüz bir şey yok" } } } },
-    "error.network" : { "localizations" : { "tr" : { "stringUnit" : { "state" : "translated", "value" : "İnternet bağlantını kontrol edip tekrar dene." } } } },
-    "error.decoding" : { "localizations" : { "tr" : { "stringUnit" : { "state" : "translated", "value" : "Veriler okunamadı." } } } },
-    "error.notFound" : { "localizations" : { "tr" : { "stringUnit" : { "state" : "translated", "value" : "Aradığın içerik bulunamadı." } } } },
-    "error.unknown" : { "localizations" : { "tr" : { "stringUnit" : { "state" : "translated", "value" : "Beklenmeyen bir hata oluştu." } } } }
-  }
+    "app.name" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kitap Cepte"
+          }
+        }
+      }
+    },
+    "auth.placeholder.message" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu ekran bir sonraki fazda hazırlanacak."
+          }
+        }
+      }
+    },
+    "auth.placeholder.title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giriş ekranı"
+          }
+        }
+      }
+    },
+    "common.cancel" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vazgeç"
+          }
+        }
+      }
+    },
+    "common.empty.title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Burada henüz bir şey yok"
+          }
+        }
+      }
+    },
+    "common.error.title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir şeyler ters gitti"
+          }
+        }
+      }
+    },
+    "common.loading" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yükleniyor…"
+          }
+        }
+      }
+    },
+    "common.ok" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamam"
+          }
+        }
+      }
+    },
+    "common.retry" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tekrar dene"
+          }
+        }
+      }
+    },
+    "error.decoding" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veriler okunamadı."
+          }
+        }
+      }
+    },
+    "error.network" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İnternet bağlantını kontrol edip tekrar dene."
+          }
+        }
+      }
+    },
+    "error.notFound" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aradığın içerik bulunamadı."
+          }
+        }
+      }
+    },
+    "error.unknown" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beklenmeyen bir hata oluştu."
+          }
+        }
+      }
+    },
+    "onboarding.next" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İleri"
+          }
+        }
+      }
+    },
+    "onboarding.page1.message" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fantastikten tarihe, aradığın her türde kitabı keşfet."
+          }
+        }
+      }
+    },
+    "onboarding.page1.title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Binlerce kitap cebinde"
+          }
+        }
+      }
+    },
+    "onboarding.page2.message" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beğendiğin kitapları favorilerine ekle, istediğin zaman geri dön."
+          }
+        }
+      }
+    },
+    "onboarding.page2.title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favorilerini kaydet"
+          }
+        }
+      }
+    },
+    "onboarding.page3.message" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mail ile giriş yap ya da misafir olarak göz at. Sepete ekle, güvenle öde."
+          }
+        }
+      }
+    },
+    "onboarding.page3.title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nasıl ilerleyeceksin?"
+          }
+        }
+      }
+    },
+    "onboarding.skip" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atla"
+          }
+        }
+      }
+    },
+    "onboarding.start" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Başla"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
 }

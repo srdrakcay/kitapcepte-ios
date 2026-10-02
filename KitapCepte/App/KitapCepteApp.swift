@@ -6,7 +6,7 @@ struct KitapCepteApp: App {
 
     var body: some Scene {
         WindowGroup {
-            RootView()
+            RootView(container: container)
                 .environment(\.appTheme, container.theme)
         }
     }

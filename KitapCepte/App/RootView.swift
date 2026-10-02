@@ -1,16 +1,22 @@
 import SwiftUI
 
-/// Faz 0: boş iskelet. Sonraki fazlarda oturum durumuna göre Onboarding/Auth/Tab akışı burada seçilir.
 struct RootView: View {
-    @Environment(\.appTheme) private var theme
+    @State private var viewModel: RootViewModel
+    @State private var onboardingViewModel: OnboardingViewModel
+
+    init(container: AppContainer) {
+        _viewModel = State(initialValue: container.makeRootViewModel())
+        _onboardingViewModel = State(initialValue: container.makeOnboardingViewModel())
+    }
 
     var body: some View {
-        AppScaffold {
-            Text(Strings.App.name)
-                .font(theme.typography.largeTitle)
-                .foregroundStyle(theme.colors.textOnPrimary)
+        switch viewModel.route {
+        case .onboarding:
+            OnboardingView(viewModel: onboardingViewModel, onFinish: viewModel.onboardingCompleted)
+        case .auth:
+            AuthPlaceholderView()
         }
     }
 }
 
-#Preview { RootView() }
+#Preview { RootView(container: .live()) }

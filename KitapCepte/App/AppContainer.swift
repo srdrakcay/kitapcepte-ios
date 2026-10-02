@@ -1,11 +1,22 @@
 import Foundation
 
-/// Bağımlılıkların oluşturulduğu tek yer (constructor injection). Sonraki fazlarda repository/use case'ler eklenir.
+/// Bağımlılıkların oluşturulduğu tek yer (constructor injection).
 struct AppContainer {
     let theme: AppTheme
-    let userDefaults: UserDefaults
+    let onboardingRepository: OnboardingRepository
 
     static func live() -> AppContainer {
-        AppContainer(theme: .standard, userDefaults: .standard)
+        AppContainer(
+            theme: .standard,
+            onboardingRepository: UserDefaultsOnboardingRepository(defaults: .standard)
+        )
+    }
+
+    @MainActor func makeRootViewModel() -> RootViewModel {
+        RootViewModel(onboardingRepository: onboardingRepository)
+    }
+
+    @MainActor func makeOnboardingViewModel() -> OnboardingViewModel {
+        OnboardingViewModel(repository: onboardingRepository)
     }
 }

@@ -21,4 +21,21 @@ enum Strings {
         static let notFound = String(localized: "error.notFound")
         static let unknown = String(localized: "error.unknown")
     }
+
+    enum Onboarding {
+        static let skip = String(localized: "onboarding.skip")
+        static let next = String(localized: "onboarding.next")
+        static let start = String(localized: "onboarding.start")
+        static let page1Title = String(localized: "onboarding.page1.title")
+        static let page1Message = String(localized: "onboarding.page1.message")
+        static let page2Title = String(localized: "onboarding.page2.title")
+        static let page2Message = String(localized: "onboarding.page2.message")
+        static let page3Title = String(localized: "onboarding.page3.title")
+        static let page3Message = String(localized: "onboarding.page3.message")
+    }
+
+    enum Auth {
+        static let placeholderTitle = String(localized: "auth.placeholder.title")
+        static let placeholderMessage = String(localized: "auth.placeholder.message")
+    }
 }

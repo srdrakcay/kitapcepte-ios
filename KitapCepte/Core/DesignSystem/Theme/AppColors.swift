@@ -11,6 +11,7 @@ struct AppColors: Sendable {
     let textPrimary = Color(hex: 0x1F1B33)
     let textSecondary = Color(hex: 0x8D8AA3)
     let textOnPrimary = Color(hex: 0xFFFFFF)
+    let textOnGradientSecondary = Color(hex: 0xFFFFFF, opacity: 0.85)
     let badgeTopItem = Color(hex: 0xFFD93B)
     let badgeCart = Color(hex: 0xF04A3C)
     let error = Color(hex: 0xF04A3C)
