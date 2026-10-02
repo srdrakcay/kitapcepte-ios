@@ -30,13 +30,22 @@ struct AppSheetContent: View {
     }
 }
 
+private struct AppSheetStyle: ViewModifier {
+    @Environment(\.appTheme) private var theme
+
+    func body(content: Content) -> some View {
+        content
+            .presentationDetents([.medium])
+            .presentationDragIndicator(.visible)
+            .presentationBackground(theme.colors.surface)
+    }
+}
+
 extension View {
-    /// İçeriğe göre yükseklik alan ortak bottom sheet.
+    /// Ortak bottom sheet.
     func appSheet<Content: View>(isPresented: Binding<Bool>, @ViewBuilder content: @escaping () -> Content) -> some View {
         sheet(isPresented: isPresented) {
-            content()
-                .presentationDetents([.medium])
-                .presentationDragIndicator(.visible)
+            content().modifier(AppSheetStyle())
         }
     }
 }

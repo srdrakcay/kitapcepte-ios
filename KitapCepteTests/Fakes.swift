@@ -36,3 +36,54 @@ final class FakeAuthRepository: AuthRepository {
 extension User {
     static let sample = User(id: UUID(), name: "Ada Lovelace", email: "ada@example.com")
 }
+
+extension Book {
+    static func sample(
+        id: String = "/works/OL1W", title: String = "The Hobbit", price: Decimal = 129.9,
+        isTopItem: Bool = false, coverID: Int? = 42
+    ) -> Book {
+        Book(id: id, title: title, authors: ["J.R.R. Tolkien"], coverID: coverID,
+             firstPublishYear: 1937, price: price, isTopItem: isTopItem)
+    }
+}
+
+final class FakeBookRepository: BookRepository, @unchecked Sendable {
+    private let lock = NSLock()
+    private var _calls: [(subject: BookSubject, page: Int)] = []
+    var handler: @Sendable (BookSubject, Int) async throws -> BookPage = { _, _ in BookPage(books: [], hasMore: false) }
+
+    var calls: [(subject: BookSubject, page: Int)] { lock.withLock { _calls } }
+
+    func books(subject: BookSubject, page: Int) async throws -> BookPage {
+        lock.withLock { _calls.append((subject, page)) }
+        return try await handler(subject, page)
+    }
+}
+
+@MainActor
+final class FakeFavoritesRepository: FavoritesRepository {
+    var ids: Set<String> = []
+    var shouldFail = false
+
+    func favoriteIDs() async -> Set<String> { ids }
+
+    func toggle(_ book: Book) async throws -> Bool {
+        if shouldFail { throw AppError.unknown }
+        if ids.remove(book.id) != nil { return false }
+        ids.insert(book.id)
+        return true
+    }
+}
+
+final class StubOpenLibraryService: OpenLibraryServicing, @unchecked Sendable {
+    private let lock = NSLock()
+    private var _callCount = 0
+    var response = SearchResponseDTO(numFound: 0, docs: [])
+
+    var callCount: Int { lock.withLock { _callCount } }
+
+    func searchBooks(subject: String, page: Int, limit: Int) async throws -> SearchResponseDTO {
+        lock.withLock { _callCount += 1 }
+        return response
+    }
+}

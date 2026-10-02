@@ -1,0 +1,75 @@
+import SwiftUI
+
+/// Tab bar + sekme içerikleri. Sekmeler canlı tutulur (kaydırma/yüklenmiş veri korunur).
+struct MainView: View {
+    @Environment(SessionManager.self) private var sessionManager
+    @Environment(FavoritesStore.self) private var favorites
+    @Environment(GuestGate.self) private var gate
+    @State private var viewModel: MainViewModel
+    @State private var homeViewModel: HomeViewModel
+
+    init(viewModel: MainViewModel, homeViewModel: HomeViewModel) {
+        _viewModel = State(initialValue: viewModel)
+        _homeViewModel = State(initialValue: homeViewModel)
+    }
+
+    var body: some View {
+        // Tek NavigationStack: Faz 4'te push edilen Detay tab bar'ın üstünü tamamen kaplar.
+        NavigationStack {
+            scaffold
+                .toolbar(.hidden, for: .navigationBar)
+        }
+        .task(id: sessionManager.currentUser?.id) { await favorites.reload() }
+    }
+
+    private var scaffold: some View {
+        AppScaffold {
+            ZStack {
+                tab(.home) {
+                    HomeView(
+                        viewModel: homeViewModel,
+                        onProfile: { viewModel.select(.profile) },
+                        onSelectBook: { _ in gate.require {} } // Faz 4: detay ekranına yönlenir
+                    )
+                }
+                tab(.favorites) { ComingSoonView() }
+                tab(.cart) { ComingSoonView() }
+                tab(.profile) { ProfileTabPlaceholder() }
+            }
+        }
+        // Tab bar listenin üstünde yüzer; liste bar'ın arkasından kayar (çevresi şeffaf).
+        .safeAreaInset(edge: .bottom, spacing: 0) {
+            AppTabBar(selection: viewModel.selectedTab, cartCount: 0, onSelect: viewModel.select)
+        }
+    }
+
+    private func tab<Content: View>(_ tab: AppTab, @ViewBuilder content: () -> Content) -> some View {
+        let isSelected = viewModel.selectedTab == tab
+        return content()
+            .opacity(isSelected ? 1 : 0)
+            .allowsHitTesting(isSelected)
+            .accessibilityHidden(!isSelected)
+    }
+}
+
+/// Henüz yapılmamış sekmeler için geçici ekran.
+private struct ComingSoonView: View {
+    var body: some View {
+        EmptyStateView(title: Strings.Placeholder.title, message: Strings.Placeholder.message, systemImage: "hammer")
+    }
+}
+
+/// Faz 8'de gerçek Profil ekranıyla değişir; şimdilik çıkış yapabilmek için.
+private struct ProfileTabPlaceholder: View {
+    @Environment(SessionManager.self) private var sessionManager
+
+    var body: some View {
+        VStack {
+            ComingSoonView()
+            AppButton(title: Strings.Main.signOut, kind: .secondary) {
+                Task { await sessionManager.signOut() }
+            }
+            .padding(.horizontal, 24)
+        }
+    }
+}

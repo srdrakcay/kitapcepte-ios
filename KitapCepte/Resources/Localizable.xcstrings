@@ -1,523 +1,680 @@
 {
-  "sourceLanguage" : "tr",
-  "strings" : {
-    "app.name" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kitap Cepte"
+  "sourceLanguage": "tr",
+  "strings": {
+    "app.name": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kitap Cepte"
           }
         }
       }
     },
-    "auth.continueAsGuest" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Misafir olarak devam et"
+    "auth.continueAsGuest": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Misafir olarak devam et"
           }
         }
       }
     },
-    "auth.error.emailTaken" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bu e-posta ile zaten bir hesap var."
+    "auth.error.emailTaken": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu e-posta ile zaten bir hesap var."
           }
         }
       }
     },
-    "auth.error.invalidCredentials" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "E-posta veya şifre hatalı."
+    "auth.error.invalidCredentials": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "E-posta veya şifre hatalı."
           }
         }
       }
     },
-    "auth.haveAccount" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zaten hesabın var mı? Giriş yap"
+    "auth.haveAccount": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zaten hesabın var mı? Giriş yap"
           }
         }
       }
     },
-    "auth.login.submit" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Giriş yap"
+    "auth.login.submit": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Giriş yap"
           }
         }
       }
     },
-    "auth.login.title" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tekrar hoş geldin"
+    "auth.login.title": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tekrar hoş geldin"
           }
         }
       }
     },
-    "auth.loginWithMail" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mail ile giriş yap"
+    "auth.loginWithMail": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mail ile giriş yap"
           }
         }
       }
     },
-    "auth.noAccount" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hesabın yok mu? Kayıt ol"
+    "auth.noAccount": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesabın yok mu? Kayıt ol"
           }
         }
       }
     },
-    "auth.register.submit" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kayıt ol"
+    "auth.register.submit": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kayıt ol"
           }
         }
       }
     },
-    "auth.register.title" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hesap oluştur"
+    "auth.register.title": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesap oluştur"
           }
         }
       }
     },
-    "auth.welcome.subtitle" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Binlerce kitap, tek dokunuş uzağında."
+    "auth.welcome.subtitle": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Binlerce kitap, tek dokunuş uzağında."
           }
         }
       }
     },
-    "common.cancel" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vazgeç"
+    "common.cancel": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vazgeç"
           }
         }
       }
     },
-    "common.empty.title" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Burada henüz bir şey yok"
+    "common.empty.title": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Burada henüz bir şey yok"
           }
         }
       }
     },
-    "common.error.title" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bir şeyler ters gitti"
+    "common.error.title": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir şeyler ters gitti"
           }
         }
       }
     },
-    "common.loading" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yükleniyor…"
+    "common.loading": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yükleniyor…"
           }
         }
       }
     },
-    "common.ok" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tamam"
+    "common.ok": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tamam"
           }
         }
       }
     },
-    "common.retry" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tekrar dene"
+    "common.retry": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tekrar dene"
           }
         }
       }
     },
-    "error.decoding" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Veriler okunamadı."
+    "error.decoding": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Veriler okunamadı."
           }
         }
       }
     },
-    "error.network" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "İnternet bağlantını kontrol edip tekrar dene."
+    "error.network": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İnternet bağlantını kontrol edip tekrar dene."
           }
         }
       }
     },
-    "error.notFound" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aradığın içerik bulunamadı."
+    "error.notFound": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aradığın içerik bulunamadı."
           }
         }
       }
     },
-    "error.unknown" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Beklenmeyen bir hata oluştu."
+    "error.unknown": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beklenmeyen bir hata oluştu."
           }
         }
       }
     },
-    "field.confirmPassword" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Şifre tekrar"
+    "field.confirmPassword": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şifre tekrar"
           }
         }
       }
     },
-    "field.email" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "E-posta"
+    "field.email": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "E-posta"
           }
         }
       }
     },
-    "field.name" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ad soyad"
+    "field.name": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ad soyad"
           }
         }
       }
     },
-    "field.password" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Şifre"
+    "field.password": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şifre"
           }
         }
       }
     },
-    "gate.action" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Üye ol / Giriş yap"
+    "gate.action": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Üye ol / Giriş yap"
           }
         }
       }
     },
-    "gate.message" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bu özelliği kullanmak için giriş yapmalı veya üye olmalısın."
+    "gate.message": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu özelliği kullanmak için giriş yapmalı veya üye olmalısın."
           }
         }
       }
     },
-    "gate.title" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Üye olman gerekiyor"
+    "gate.title": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Üye olman gerekiyor"
           }
         }
       }
     },
-    "main.greeting" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Merhaba, %@"
+    "main.signOut": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çıkış yap"
           }
         }
       }
     },
-    "main.guest" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Misafir olarak geziyorsun"
+    "onboarding.next": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İleri"
           }
         }
       }
     },
-    "main.restricted" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Favoriler (üyelere özel)"
+    "onboarding.page1.message": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fantastikten tarihe, aradığın her türde kitabı keşfet."
           }
         }
       }
     },
-    "main.signOut" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Çıkış yap"
+    "onboarding.page1.title": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Binlerce kitap cebinde"
           }
         }
       }
     },
-    "onboarding.next" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "İleri"
+    "onboarding.page2.message": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beğendiğin kitapları favorilerine ekle, istediğin zaman geri dön."
           }
         }
       }
     },
-    "onboarding.page1.message" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fantastikten tarihe, aradığın her türde kitabı keşfet."
+    "onboarding.page2.title": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Favorilerini kaydet"
           }
         }
       }
     },
-    "onboarding.page1.title" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Binlerce kitap cebinde"
+    "onboarding.page3.message": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mail ile giriş yap ya da misafir olarak göz at. Sepete ekle, güvenle öde."
           }
         }
       }
     },
-    "onboarding.page2.message" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Beğendiğin kitapları favorilerine ekle, istediğin zaman geri dön."
+    "onboarding.page3.title": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nasıl ilerleyeceksin?"
           }
         }
       }
     },
-    "onboarding.page2.title" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Favorilerini kaydet"
+    "onboarding.skip": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atla"
           }
         }
       }
     },
-    "onboarding.page3.message" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mail ile giriş yap ya da misafir olarak göz at. Sepete ekle, güvenle öde."
+    "onboarding.start": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Başla"
           }
         }
       }
     },
-    "onboarding.page3.title" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nasıl ilerleyeceksin?"
+    "validation.email.invalid": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geçerli bir e-posta gir."
           }
         }
       }
     },
-    "onboarding.skip" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Atla"
+    "validation.name.empty": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ad soyad boş olamaz."
           }
         }
       }
     },
-    "onboarding.start" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Başla"
+    "validation.password.empty": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şifre boş olamaz."
           }
         }
       }
     },
-    "validation.email.invalid" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Geçerli bir e-posta gir."
+    "validation.password.mismatch": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şifreler eşleşmiyor."
           }
         }
       }
     },
-    "validation.name.empty" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ad soyad boş olamaz."
+    "validation.password.short": {
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şifre en az 6 karakter olmalı."
           }
         }
       }
     },
-    "validation.password.empty" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Şifre boş olamaz."
+    "tab.home": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ana Sayfa"
           }
         }
       }
     },
-    "validation.password.mismatch" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Şifreler eşleşmiyor."
+    "tab.favorites": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Favoriler"
           }
         }
       }
     },
-    "validation.password.short" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Şifre en az 6 karakter olmalı."
+    "tab.cart": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sepet"
+          }
+        }
+      }
+    },
+    "tab.profile": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Profil"
+          }
+        }
+      }
+    },
+    "subject.fantasy": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fantastik"
+          }
+        }
+      }
+    },
+    "subject.science_fiction": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bilim Kurgu"
+          }
+        }
+      }
+    },
+    "subject.romance": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Romantik"
+          }
+        }
+      }
+    },
+    "subject.mystery": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gizem"
+          }
+        }
+      }
+    },
+    "subject.history": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tarih"
+          }
+        }
+      }
+    },
+    "subject.thriller": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gerilim"
+          }
+        }
+      }
+    },
+    "subject.horror": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Korku"
+          }
+        }
+      }
+    },
+    "subject.biography": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Biyografi"
+          }
+        }
+      }
+    },
+    "home.empty": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu kategoride kitap bulunamadı."
+          }
+        }
+      }
+    },
+    "badge.topItem": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Öne Çıkan"
+          }
+        }
+      }
+    },
+    "a11y.profile": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Profil"
+          }
+        }
+      }
+    },
+    "a11y.favorite.add": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Favorilere ekle"
+          }
+        }
+      }
+    },
+    "a11y.favorite.remove": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Favorilerden çıkar"
+          }
+        }
+      }
+    },
+    "placeholder.title": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çok yakında"
+          }
+        }
+      }
+    },
+    "placeholder.message": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu bölüm sonraki fazda hazırlanacak."
           }
         }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

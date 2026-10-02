@@ -32,3 +32,9 @@ extension AppScaffold where Top == EmptyView, Bottom == EmptyView {
         self.init(top: { EmptyView() }, bottom: { EmptyView() }, content: content)
     }
 }
+
+extension AppScaffold where Top == EmptyView {
+    init(@ViewBuilder bottom: () -> Bottom, @ViewBuilder content: () -> Content) {
+        self.init(top: { EmptyView() }, bottom: bottom, content: content)
+    }
+}

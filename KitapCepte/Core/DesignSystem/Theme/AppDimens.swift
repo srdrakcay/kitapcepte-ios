@@ -23,6 +23,9 @@ struct AppDimens: Sendable {
     let borderWidth: CGFloat = 1
     let badgeSize: CGFloat = 18
 
+    let shadowRadius: CGFloat = 16
+    let shadowOffsetY: CGFloat = 4
+
     // Animasyon
     let animationDuration: Double = 0.25
 }

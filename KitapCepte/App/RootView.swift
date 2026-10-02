@@ -26,11 +26,12 @@ struct RootView: View {
                     onContinueAsGuest: container.sessionManager.continueAsGuest
                 )
             case .main:
-                MainPlaceholderView()
+                MainView(viewModel: container.makeMainViewModel(), homeViewModel: container.makeHomeViewModel())
             }
         }
         .environment(container.sessionManager)
         .environment(container.guestGate)
+        .environment(container.favoritesStore)
         .guestGateSheet(container.guestGate)
         .task { await container.sessionManager.restore() }
     }

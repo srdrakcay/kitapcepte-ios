@@ -15,6 +15,7 @@ struct AppColors: Sendable {
     let badgeTopItem = Color(hex: 0xFFD93B)
     let badgeCart = Color(hex: 0xF04A3C)
     let error = Color(hex: 0xF04A3C)
+    let shadow = Color(hex: 0x1F1B33, opacity: 0.18)
 
     var backgroundGradient: LinearGradient {
         LinearGradient(

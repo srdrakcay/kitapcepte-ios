@@ -38,6 +38,7 @@ struct AppChipRow<Item: Hashable>: View {
             }
             .padding(.horizontal, theme.dimens.spacingL)
         }
+        .fixedSize(horizontal: false, vertical: true)
     }
 }
 
