@@ -167,7 +167,7 @@ struct FavoritesViewModelTests {
         let h = makeHarness(books: [a])
         await h.store.reload()
         await h.sut.send(.onAppear)
-        h.repo.toggleShouldFail = true
+        h.repo.shouldFail = true
         await h.sut.send(.remove(a))
         #expect(h.sut.state.books.value?.map(\.id) == ["a"])
         #expect(h.store.isFavorite("a"))
