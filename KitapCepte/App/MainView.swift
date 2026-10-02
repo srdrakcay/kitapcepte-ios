@@ -7,13 +7,16 @@ struct MainView: View {
     @Environment(CartStore.self) private var cart
     @State private var viewModel: MainViewModel
     @State private var homeViewModel: HomeViewModel
+    @State private var profileViewModel: ProfileViewModel // MARK: Faz 8a
     private let makeDetailViewModel: (Book) -> DetailViewModel
 
     init(
         viewModel: MainViewModel,
         homeViewModel: HomeViewModel,
-        makeDetailViewModel: @escaping (Book) -> DetailViewModel
+        makeDetailViewModel: @escaping (Book) -> DetailViewModel,
+        profileViewModel: ProfileViewModel // MARK: Faz 8a
     ) {
+        _profileViewModel = State(initialValue: profileViewModel) // MARK: Faz 8a
         _viewModel = State(initialValue: viewModel)
         _homeViewModel = State(initialValue: homeViewModel)
         self.makeDetailViewModel = makeDetailViewModel
@@ -44,7 +47,7 @@ struct MainView: View {
                 }
                 tab(.favorites) { ComingSoonView() }
                 tab(.cart) { ComingSoonView() }
-                tab(.profile) { ProfileTabPlaceholder() }
+                tab(.profile) { ProfileView(viewModel: profileViewModel) } // MARK: Faz 8a
             }
         }
         // Tab bar listenin üstünde yüzer; liste bar'ın arkasından kayar (çevresi şeffaf).
@@ -78,20 +81,5 @@ struct MainView: View {
 private struct ComingSoonView: View {
     var body: some View {
         EmptyStateView(title: Strings.Placeholder.title, message: Strings.Placeholder.message, systemImage: "hammer")
-    }
-}
-
-/// Faz 8'de gerçek Profil ekranıyla değişir; şimdilik çıkış yapabilmek için.
-private struct ProfileTabPlaceholder: View {
-    @Environment(SessionManager.self) private var sessionManager
-
-    var body: some View {
-        VStack {
-            ComingSoonView()
-            AppButton(title: Strings.Main.signOut, kind: .secondary) {
-                Task { await sessionManager.signOut() }
-            }
-            .padding(.horizontal, 24)
-        }
     }
 }

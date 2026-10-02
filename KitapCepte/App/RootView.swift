@@ -29,7 +29,8 @@ struct RootView: View {
                 MainView(
                     viewModel: container.makeMainViewModel(),
                     homeViewModel: container.makeHomeViewModel(),
-                    makeDetailViewModel: container.makeDetailViewModel
+                    makeDetailViewModel: container.makeDetailViewModel,
+                    profileViewModel: container.makeProfileViewModel() // MARK: Faz 8a
                 )
             }
         }

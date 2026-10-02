@@ -20,9 +20,7 @@ struct AuthFormScreen<Content: View>: View {
                         .foregroundStyle(theme.colors.textOnPrimary)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .accessibilityAddTraits(.isHeader)
-                    VStack(spacing: theme.dimens.spacingL) { content }
-                        .padding(theme.dimens.spacingL)
-                        .background(theme.colors.surface, in: theme.shapes.card)
+                    AppFormCard { content }
                 }
                 .padding(theme.dimens.spacingL)
             }

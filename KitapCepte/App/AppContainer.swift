@@ -68,6 +68,15 @@ struct AppContainer {
         HomeViewModel(getBooks: GetBooksUseCase(repository: bookRepository))
     }
 
+    // MARK: Faz 8a
+    func makeProfileViewModel() -> ProfileViewModel {
+        ProfileViewModel(
+            userProvider: { [sessionManager] in sessionManager.currentUser },
+            changePassword: ChangePasswordUseCase(repository: authRepository),
+            signOut: { [sessionManager] in await sessionManager.signOut() }
+        )
+    }
+
     func makeDetailViewModel(book: Book) -> DetailViewModel {
         DetailViewModel(
             book: book,
