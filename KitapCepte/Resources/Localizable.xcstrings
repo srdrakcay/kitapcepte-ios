@@ -1,0 +1,17 @@
+{
+  "sourceLanguage" : "tr",
+  "version" : "1.0",
+  "strings" : {
+    "app.name" : { "localizations" : { "tr" : { "stringUnit" : { "state" : "translated", "value" : "Kitap Cepte" } } } },
+    "common.retry" : { "localizations" : { "tr" : { "stringUnit" : { "state" : "translated", "value" : "Tekrar dene" } } } },
+    "common.loading" : { "localizations" : { "tr" : { "stringUnit" : { "state" : "translated", "value" : "Yükleniyor…" } } } },
+    "common.cancel" : { "localizations" : { "tr" : { "stringUnit" : { "state" : "translated", "value" : "Vazgeç" } } } },
+    "common.ok" : { "localizations" : { "tr" : { "stringUnit" : { "state" : "translated", "value" : "Tamam" } } } },
+    "common.error.title" : { "localizations" : { "tr" : { "stringUnit" : { "state" : "translated", "value" : "Bir şeyler ters gitti" } } } },
+    "common.empty.title" : { "localizations" : { "tr" : { "stringUnit" : { "state" : "translated", "value" : "Burada henüz bir şey yok" } } } },
+    "error.network" : { "localizations" : { "tr" : { "stringUnit" : { "state" : "translated", "value" : "İnternet bağlantını kontrol edip tekrar dene." } } } },
+    "error.decoding" : { "localizations" : { "tr" : { "stringUnit" : { "state" : "translated", "value" : "Veriler okunamadı." } } } },
+    "error.notFound" : { "localizations" : { "tr" : { "stringUnit" : { "state" : "translated", "value" : "Aradığın içerik bulunamadı." } } } },
+    "error.unknown" : { "localizations" : { "tr" : { "stringUnit" : { "state" : "translated", "value" : "Beklenmeyen bir hata oluştu." } } } }
+  }
+}
