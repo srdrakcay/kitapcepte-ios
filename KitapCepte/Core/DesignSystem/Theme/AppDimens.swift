@@ -34,4 +34,8 @@ struct AppDimens: Sendable {
 
     // Animasyon
     let animationDuration: Double = 0.25
+
+    // Sepet (Faz 6)
+    /// Sepet satırındaki kapak genişliği.
+    let cartCoverWidth: CGFloat = 76
 }

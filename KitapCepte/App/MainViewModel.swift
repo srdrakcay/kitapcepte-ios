@@ -26,6 +26,12 @@ extension MainViewModel {
         gate.require { path.append(.detail(book)) }
     }
 
+    // MARK: Faz 6
+    /// Ödeme üyelere özeldir; misafir "üye ol" sheet'ini görür.
+    func openPayment() {
+        gate.require { path.append(.payment) }
+    }
+
     func pop() {
         guard !path.isEmpty else { return }
         path.removeLast()
