@@ -12,6 +12,7 @@ struct CartItem: Identifiable, Hashable, Sendable {
     var id: String { bookID }
     var authorsLine: String { authors.joined(separator: ", ") }
     var totalPrice: Decimal { unitPrice * Decimal(quantity) }
+    func coverURL(_ size: CoverSize) -> URL? { Book.coverURL(id: coverID, size: size) }
 
     init(bookID: String, title: String, authors: [String], coverID: Int?, unitPrice: Decimal, quantity: Int = 1) {
         self.bookID = bookID

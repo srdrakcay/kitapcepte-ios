@@ -86,6 +86,11 @@ struct AppContainer {
         )
     }
 
+    // MARK: Faz 6
+    func makeCartViewModel() -> CartViewModel {
+        CartViewModel(cart: cartStore)
+    }
+
     private static func makeModelContainer() -> ModelContainer {
         let schema = Schema([AccountEntity.self, FavoriteEntity.self, CartItemEntity.self])
         if let container = try? ModelContainer(for: schema) { return container }

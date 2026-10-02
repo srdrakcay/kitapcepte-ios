@@ -28,4 +28,30 @@ final class SwiftDataCartRepository: CartRepository {
         context.insert(CartItemEntity(ownerID: owner, item: CartItem(book: book)))
         try context.save()
     }
+
+    func setQuantity(_ quantity: Int, for bookID: String) async throws {
+        guard let owner = userIDProvider() else { throw AppError.unknown }
+        guard let entity = try fetch(owner: owner, bookID: bookID) else { return }
+        entity.quantity = CartLimits.clamp(quantity)
+        try context.save()
+    }
+
+    func remove(_ bookID: String) async throws {
+        guard let owner = userIDProvider() else { throw AppError.unknown }
+        guard let entity = try fetch(owner: owner, bookID: bookID) else { return }
+        context.delete(entity)
+        try context.save()
+    }
+
+    func clear() async throws {
+        guard let owner = userIDProvider() else { throw AppError.unknown }
+        let descriptor = FetchDescriptor<CartItemEntity>(predicate: #Predicate { $0.ownerID == owner })
+        for entity in try context.fetch(descriptor) { context.delete(entity) }
+        try context.save()
+    }
+
+    private func fetch(owner: UUID, bookID: String) throws -> CartItemEntity? {
+        let descriptor = FetchDescriptor<CartItemEntity>(predicate: #Predicate { $0.ownerID == owner && $0.bookID == bookID })
+        return try context.fetch(descriptor).first
+    }
 }

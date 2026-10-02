@@ -1,0 +1,196 @@
+{
+  "sourceLanguage": "tr",
+  "strings": {
+    "cart.title": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sepet"
+          }
+        }
+      }
+    },
+    "cart.empty.title": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sepetin boş"
+          }
+        }
+      }
+    },
+    "cart.empty.message": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beğendiğin kitapları sepete ekle, burada görünsün."
+          }
+        }
+      }
+    },
+    "cart.remove.question": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ürün kaldırılsın mı?"
+          }
+        }
+      }
+    },
+    "cart.remove.no": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hayır"
+          }
+        }
+      }
+    },
+    "cart.remove.yes": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Evet"
+          }
+        }
+      }
+    },
+    "cart.summary.subtotal": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ara toplam"
+          }
+        }
+      }
+    },
+    "cart.summary.tax": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vergi (KDV)"
+          }
+        }
+      }
+    },
+    "cart.summary.shipping": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ödemeler (kargo)"
+          }
+        }
+      }
+    },
+    "cart.summary.shipping.free": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ücretsiz"
+          }
+        }
+      }
+    },
+    "cart.summary.total": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toplam"
+          }
+        }
+      }
+    },
+    "cart.checkout": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Öde · %@"
+          }
+        }
+      }
+    },
+    "cart.a11y.increase": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adedi artır"
+          }
+        }
+      }
+    },
+    "cart.a11y.decrease": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adedi azalt"
+          }
+        }
+      }
+    },
+    "cart.a11y.remove": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sepetten kaldır"
+          }
+        }
+      }
+    },
+    "cart.a11y.quantity": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adet: %lld"
+          }
+        }
+      }
+    },
+    "cart.a11y.itemFormat": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@, %@"
+          }
+        }
+      }
+    },
+    "cart.payment.title": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ödeme"
+          }
+        }
+      }
+    },
+    "cart.payment.message": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ödeme ekranı sonraki fazda hazırlanacak."
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

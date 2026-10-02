@@ -8,17 +8,20 @@ struct MainView: View {
     @State private var viewModel: MainViewModel
     @State private var homeViewModel: HomeViewModel
     @State private var favoritesViewModel: FavoritesViewModel // MARK: Faz 5
+    @State private var cartViewModel: CartViewModel // MARK: Faz 6
     private let makeDetailViewModel: (Book) -> DetailViewModel
 
     init(
         viewModel: MainViewModel,
         homeViewModel: HomeViewModel,
         favoritesViewModel: FavoritesViewModel, // MARK: Faz 5
+        cartViewModel: CartViewModel, // MARK: Faz 6
         makeDetailViewModel: @escaping (Book) -> DetailViewModel
     ) {
         _viewModel = State(initialValue: viewModel)
         _homeViewModel = State(initialValue: homeViewModel)
         _favoritesViewModel = State(initialValue: favoritesViewModel) // MARK: Faz 5
+        _cartViewModel = State(initialValue: cartViewModel) // MARK: Faz 6
         self.makeDetailViewModel = makeDetailViewModel
     }
 
@@ -53,7 +56,14 @@ struct MainView: View {
                         onSelectBook: viewModel.openDetail
                     )
                 }
-                tab(.cart) { ComingSoonView() }
+                // MARK: Faz 6
+                tab(.cart) {
+                    CartView(
+                        viewModel: cartViewModel,
+                        onProfile: { viewModel.select(.profile) },
+                        onCheckout: viewModel.openPayment
+                    )
+                }
                 tab(.profile) { ProfileTabPlaceholder() }
             }
         }
@@ -72,6 +82,9 @@ struct MainView: View {
                 onBack: viewModel.pop,
                 onSelectBook: viewModel.openDetail
             )
+        // MARK: Faz 6
+        case .payment:
+            PaymentPlaceholderView(onBack: viewModel.pop)
         }
     }
 

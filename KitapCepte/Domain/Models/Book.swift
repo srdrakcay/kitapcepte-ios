@@ -40,7 +40,10 @@ enum CoverSize: String, Sendable {
 extension Book {
     private static let coversBaseURL = "https://covers.openlibrary.org/b/id/"
 
-    func coverURL(_ size: CoverSize) -> URL? {
-        coverID.flatMap { URL(string: "\(Self.coversBaseURL)\($0)-\(size.rawValue).jpg") }
+    func coverURL(_ size: CoverSize) -> URL? { Self.coverURL(id: coverID, size: size) }
+
+    /// Kapak kimliğinden URL (sepet satırı gibi `Book` olmayan özetler de kullanır).
+    static func coverURL(id: Int?, size: CoverSize) -> URL? {
+        id.flatMap { URL(string: "\(coversBaseURL)\($0)-\(size.rawValue).jpg") }
     }
 }
