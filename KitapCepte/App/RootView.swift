@@ -32,7 +32,8 @@ struct RootView: View {
                     favoritesViewModel: container.makeFavoritesViewModel(), // MARK: Faz 5
                     cartViewModel: container.makeCartViewModel(), // MARK: Faz 6
                     profileViewModel: container.makeProfileViewModel(), // MARK: Faz 8a
-                    makeDetailViewModel: container.makeDetailViewModel
+                    makeDetailViewModel: container.makeDetailViewModel,
+                    makePaymentViewModel: container.makePaymentViewModel // MARK: Faz 7
                 )
             }
         }
@@ -40,6 +41,7 @@ struct RootView: View {
         .environment(container.guestGate)
         .environment(container.favoritesStore)
         .environment(container.cartStore)
+        .environment(container.savedCardsStore) // MARK: Faz 7
         .guestGateSheet(container.guestGate)
         .task { await container.sessionManager.restore() }
     }

@@ -15,7 +15,14 @@ struct AppColors: Sendable {
     let badgeTopItem = Color(hex: 0xFFD93B)
     let badgeCart = Color(hex: 0xF04A3C)
     let error = Color(hex: 0xF04A3C)
+    // Kart önizleme (Faz 7)
+    let cardStart = Color(hex: 0x2B2370)
+    let cardEnd = Color(hex: 0x5B3FE8)
     let shadow = Color(hex: 0x1F1B33, opacity: 0.18)
+
+    var cardGradient: LinearGradient {
+        LinearGradient(colors: [cardStart, cardEnd], startPoint: .topLeading, endPoint: .bottomTrailing)
+    }
 
     var backgroundGradient: LinearGradient {
         LinearGradient(

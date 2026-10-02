@@ -1,0 +1,356 @@
+{
+  "sourceLanguage": "tr",
+  "strings": {
+    "payment.title": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ödeme"
+          }
+        }
+      }
+    },
+    "payment.field.number": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kart numarası"
+          }
+        }
+      }
+    },
+    "payment.a11y.number": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kart numarası, rakamları gir"
+          }
+        }
+      }
+    },
+    "payment.field.holder": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kart üzerindeki isim"
+          }
+        }
+      }
+    },
+    "payment.field.expiry": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SKT (AA/YY)"
+          }
+        }
+      }
+    },
+    "payment.field.cvv": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "CVV"
+          }
+        }
+      }
+    },
+    "payment.saveCard": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kartı kaydet"
+          }
+        }
+      }
+    },
+    "payment.total": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toplam"
+          }
+        }
+      }
+    },
+    "payment.error.number": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geçerli bir kart numarası gir"
+          }
+        }
+      }
+    },
+    "payment.error.holder": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kart sahibinin adını gir"
+          }
+        }
+      }
+    },
+    "payment.error.expiry": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geçerli bir son kullanma tarihi gir (AA/YY)"
+          }
+        }
+      }
+    },
+    "payment.error.expired": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kartın süresi dolmuş"
+          }
+        }
+      }
+    },
+    "payment.error.cvv": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geçerli bir CVV gir"
+          }
+        }
+      }
+    },
+    "payment.error.declined": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ödeme reddedildi. Lütfen başka bir kart dene."
+          }
+        }
+      }
+    },
+    "payment.error.failed": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ödeme tamamlanamadı. Lütfen tekrar dene."
+          }
+        }
+      }
+    },
+    "payment.empty.title": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ödenecek bir şey yok"
+          }
+        }
+      }
+    },
+    "payment.empty.message": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sepetin boş. Önce sepetine kitap ekle."
+          }
+        }
+      }
+    },
+    "payment.success.title": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ödeme başarılı"
+          }
+        }
+      }
+    },
+    "payment.success.message": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Siparişin alındı, teşekkürler!"
+          }
+        }
+      }
+    },
+    "payment.receipt.reference": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sipariş no"
+          }
+        }
+      }
+    },
+    "payment.receipt.amount": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ödenen tutar"
+          }
+        }
+      }
+    },
+    "payment.receipt.card": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kart"
+          }
+        }
+      }
+    },
+    "payment.receipt.date": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tarih"
+          }
+        }
+      }
+    },
+    "payment.backHome": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ana sayfaya dön"
+          }
+        }
+      }
+    },
+    "payment.brand.visa": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Visa"
+          }
+        }
+      }
+    },
+    "payment.brand.mastercard": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mastercard"
+          }
+        }
+      }
+    },
+    "payment.brand.amex": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "American Express"
+          }
+        }
+      }
+    },
+    "payment.brand.troy": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Troy"
+          }
+        }
+      }
+    },
+    "payment.brand.unknown": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kart"
+          }
+        }
+      }
+    },
+    "payment.preview.holder": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AD SOYAD"
+          }
+        }
+      }
+    },
+    "payment.preview.expiry": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AA/YY"
+          }
+        }
+      }
+    },
+    "payment.pay": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Öde · %@"
+          }
+        }
+      }
+    },
+    "payment.cardFormat": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ •••• %@"
+          }
+        }
+      }
+    },
+    "payment.a11y.preview": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ kart önizlemesi"
+          }
+        }
+      }
+    },
+    "payment.a11y.previewLast4": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ kartı, son dört hane %@"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

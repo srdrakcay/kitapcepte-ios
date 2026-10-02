@@ -42,4 +42,10 @@ struct AppDimens: Sendable {
     // Profil (Faz 8a)
     /// Profil avatarı çapı.
     let avatarSize: CGFloat = 72
+
+    // Ödeme (Faz 7)
+    /// Kart önizleme en/boy oranı (ISO/IEC 7810 ID-1).
+    let cardAspectRatio: CGFloat = 1.586
+    /// Başarı ekranı ikon boyutu.
+    let successIconSize: CGFloat = 72
 }

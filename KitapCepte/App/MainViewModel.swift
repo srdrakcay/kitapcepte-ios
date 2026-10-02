@@ -32,6 +32,13 @@ extension MainViewModel {
         gate.require { path.append(.payment) }
     }
 
+    // MARK: Faz 7
+    /// Ödeme tamamlandı: yığını boşaltır ve Ana Sayfa sekmesine döner.
+    func finishPayment() {
+        path = []
+        selectedTab = .home
+    }
+
     func pop() {
         guard !path.isEmpty else { return }
         path.removeLast()

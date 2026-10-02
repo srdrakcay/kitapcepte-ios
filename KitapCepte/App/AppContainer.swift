@@ -13,6 +13,8 @@ struct AppContainer {
     let favoritesStore: FavoritesStore
     let favoritesRepository: FavoritesRepository // MARK: Faz 5
     let cartStore: CartStore
+    let savedCardsStore: SavedCardsStore // MARK: Faz 7
+    let paymentGateway: PaymentGateway // MARK: Faz 7
     let modelContainer: ModelContainer
 
     static func live() -> AppContainer {
@@ -31,6 +33,10 @@ struct AppContainer {
             context: context,
             userIDProvider: { [weak sessionManager] in sessionManager?.currentUser?.id }
         )
+        let savedCardRepository = SwiftDataSavedCardRepository(
+            context: context,
+            userIDProvider: { [weak sessionManager] in sessionManager?.currentUser?.id }
+        )
         let apiClient = URLSessionAPIClient(session: .shared)
         return AppContainer(
             theme: .standard,
@@ -42,6 +48,8 @@ struct AppContainer {
             favoritesStore: FavoritesStore(repository: favoritesRepository),
             favoritesRepository: favoritesRepository, // MARK: Faz 5
             cartStore: CartStore(repository: cartRepository),
+            savedCardsStore: SavedCardsStore(repository: savedCardRepository), // MARK: Faz 7
+            paymentGateway: SimulatedPaymentGateway(), // MARK: Faz 7
             modelContainer: modelContainer
         )
     }
@@ -100,8 +108,17 @@ struct AppContainer {
         CartViewModel(cart: cartStore)
     }
 
+
+    // MARK: Faz 7
+    func makePaymentViewModel() -> PaymentViewModel {
+        PaymentViewModel(
+            pay: PayUseCase(validator: CardValidator(), gateway: paymentGateway, cart: cartStore, savedCards: savedCardsStore),
+            cart: cartStore
+        )
+    }
+
     private static func makeModelContainer() -> ModelContainer {
-        let schema = Schema([AccountEntity.self, FavoriteEntity.self, CartItemEntity.self])
+        let schema = Schema([AccountEntity.self, FavoriteEntity.self, CartItemEntity.self, SavedCardEntity.self])
         if let container = try? ModelContainer(for: schema) { return container }
         // Disk deposu açılamazsa uygulama bellek içi depoyla çalışmaya devam eder.
         let fallback = ModelConfiguration(isStoredInMemoryOnly: true)

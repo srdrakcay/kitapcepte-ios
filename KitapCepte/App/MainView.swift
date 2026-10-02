@@ -5,12 +5,14 @@ struct MainView: View {
     @Environment(SessionManager.self) private var sessionManager
     @Environment(FavoritesStore.self) private var favorites
     @Environment(CartStore.self) private var cart
+    @Environment(SavedCardsStore.self) private var savedCards // MARK: Faz 7
     @State private var viewModel: MainViewModel
     @State private var homeViewModel: HomeViewModel
     @State private var favoritesViewModel: FavoritesViewModel // MARK: Faz 5
     @State private var cartViewModel: CartViewModel // MARK: Faz 6
     @State private var profileViewModel: ProfileViewModel // MARK: Faz 8a
     private let makeDetailViewModel: (Book) -> DetailViewModel
+    private let makePaymentViewModel: () -> PaymentViewModel // MARK: Faz 7
 
     init(
         viewModel: MainViewModel,
@@ -18,7 +20,8 @@ struct MainView: View {
         favoritesViewModel: FavoritesViewModel, // MARK: Faz 5
         cartViewModel: CartViewModel, // MARK: Faz 6
         profileViewModel: ProfileViewModel, // MARK: Faz 8a
-        makeDetailViewModel: @escaping (Book) -> DetailViewModel
+        makeDetailViewModel: @escaping (Book) -> DetailViewModel,
+        makePaymentViewModel: @escaping () -> PaymentViewModel // MARK: Faz 7
     ) {
         _profileViewModel = State(initialValue: profileViewModel) // MARK: Faz 8a
         _viewModel = State(initialValue: viewModel)
@@ -26,6 +29,7 @@ struct MainView: View {
         _favoritesViewModel = State(initialValue: favoritesViewModel) // MARK: Faz 5
         _cartViewModel = State(initialValue: cartViewModel) // MARK: Faz 6
         self.makeDetailViewModel = makeDetailViewModel
+        self.makePaymentViewModel = makePaymentViewModel
     }
 
     var body: some View {
@@ -38,6 +42,7 @@ struct MainView: View {
         .task(id: sessionManager.currentUser?.id) {
             await favorites.reload()
             await cart.reload()
+            await savedCards.reload()
         }
     }
 
@@ -86,9 +91,9 @@ struct MainView: View {
                 onBack: viewModel.pop,
                 onSelectBook: viewModel.openDetail
             )
-        // MARK: Faz 6
+        // MARK: Faz 7
         case .payment:
-            PaymentPlaceholderView(onBack: viewModel.pop)
+            PaymentView(viewModel: makePaymentViewModel(), onBack: viewModel.pop, onFinish: viewModel.finishPayment)
         }
     }
 

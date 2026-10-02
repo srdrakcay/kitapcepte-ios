@@ -170,26 +170,6 @@
           }
         }
       }
-    },
-    "cart.payment.title": {
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ödeme"
-          }
-        }
-      }
-    },
-    "cart.payment.message": {
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ödeme ekranı sonraki fazda hazırlanacak."
-          }
-        }
-      }
     }
   },
   "version": "1.0"

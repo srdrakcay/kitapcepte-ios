@@ -48,19 +48,57 @@ private struct AppFieldContainer<Field: View>: View {
     }
 }
 
+/// `format` verilirse yerel taslak metin tutar: biçimlendirme sonucu dışarıdaki değer değişmese bile alanın gösterdiği
+/// metin düzeltilir (TextField/SecureField içeride metin önbelleği tuttuğu için yalnızca binding'e geri yazmak yetmez).
+/// Taslak tek yönlüdür (alan -> dışarı); `format` yoksa doğrudan binding kullanılır.
+private struct DraftField<Field: View>: View {
+    @Binding var text: String
+    let format: ((String) -> String)?
+    let field: (Binding<String>) -> Field
+    @State private var draft: String
+
+    init(text: Binding<String>, format: ((String) -> String)?, @ViewBuilder field: @escaping (Binding<String>) -> Field) {
+        _text = text
+        self.format = format
+        self.field = field
+        _draft = State(initialValue: text.wrappedValue)
+    }
+
+    @ViewBuilder
+    var body: some View {
+        if let format {
+            field($draft)
+                .onChange(of: draft) { _, new in
+                    let formatted = format(new)
+                    if formatted != new { draft = formatted }
+                    if formatted != text { text = formatted }
+                }
+        } else {
+            field($text)
+        }
+    }
+}
+
 struct AppTextField: View {
     let label: String
     @Binding var text: String
     var systemImage: String?
     var errorMessage: String?
     var keyboard: UIKeyboardType = .default
+    var capitalization: TextInputAutocapitalization = .never
+    var accessibilityLabel: String?
+    /// Girdiyi yazarken yeniden biçimlendirir.
+    var format: ((String) -> String)?
 
     var body: some View {
         AppFieldContainer(label: label, systemImage: systemImage, errorMessage: errorMessage) {
-            TextField(label, text: $text)
-                .keyboardType(keyboard)
-                .textInputAutocapitalization(.never)
-                .autocorrectionDisabled()
+            DraftField(text: $text, format: format) { draft in
+                TextField(label, text: draft)
+                    .keyboardType(keyboard)
+                    .textInputAutocapitalization(capitalization)
+                    .autocorrectionDisabled()
+                    .accessibilityLabel(accessibilityLabel ?? label)
+            }
         }
     }
 }
@@ -70,10 +108,15 @@ struct AppSecureField: View {
     @Binding var text: String
     var systemImage: String? = "lock"
     var errorMessage: String?
+    var keyboard: UIKeyboardType = .default
+    var format: ((String) -> String)?
 
     var body: some View {
         AppFieldContainer(label: label, systemImage: systemImage, errorMessage: errorMessage) {
-            SecureField(label, text: $text)
+            DraftField(text: $text, format: format) { draft in
+                SecureField(label, text: draft)
+                    .keyboardType(keyboard)
+            }
         }
     }
 }

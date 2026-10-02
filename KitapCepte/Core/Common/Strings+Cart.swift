@@ -17,8 +17,6 @@ extension Strings {
         static let increase = String(localized: "cart.a11y.increase", table: "Cart")
         static let decrease = String(localized: "cart.a11y.decrease", table: "Cart")
         static let remove = String(localized: "cart.a11y.remove", table: "Cart")
-        static let paymentTitle = String(localized: "cart.payment.title", table: "Cart")
-        static let paymentMessage = String(localized: "cart.payment.message", table: "Cart")
 
         static func checkout(_ price: String) -> String {
             String(format: String(localized: "cart.checkout", table: "Cart"), price)
